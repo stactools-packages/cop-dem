@@ -1,0 +1,103 @@
+{
+  "type": "Feature",
+  "stac_version": "1.0.0",
+  "id": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM",
+  "properties": {
+    "platform": "TanDEM-X",
+    "gsd": 90,
+    "providers": [
+      {
+        "name": "European Space  Agency",
+        "roles": [
+          "licensor"
+        ],
+        "url": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf"
+      },
+      {
+        "name": "Sinergise",
+        "roles": [
+          "producer",
+          "processor"
+        ],
+        "url": "https://registry.opendata.aws/copernicus-dem/"
+      },
+      {
+        "name": "OpenTopography",
+        "roles": [
+          "host"
+        ],
+        "url": "https://portal.opentopography.org/datasetMetadata?otCollectionID=OT.032021.4326.1"
+      }
+    ],
+    "license": "proprietary",
+    "proj:epsg": 4326,
+    "proj:transform": [
+      0.00125,
+      0.0,
+      -115.000625,
+      0.0,
+      -0.0008333333333333334,
+      54.000416666666666
+    ],
+    "proj:shape": [
+      1200,
+      800
+    ],
+    "datetime": "2021-04-22T00:00:00Z"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -114.000625,
+          53.000416666666666
+        ],
+        [
+          -114.000625,
+          54.000416666666666
+        ],
+        [
+          -115.000625,
+          54.000416666666666
+        ],
+        [
+          -115.000625,
+          53.000416666666666
+        ],
+        [
+          -114.000625,
+          53.000416666666666
+        ]
+      ]
+    ]
+  },
+  "links": [
+    {
+      "rel": "handbook",
+      "href": "https://object.cloud.sdsc.edu/v1/AUTH_opentopography/www/metadata/Copernicus_metadata.pdf",
+      "type": "application/pdf",
+      "title": "Copernicus DEM User handbook",
+      "description": "Also includes data usage information"
+    }
+  ],
+  "assets": {
+    "data": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "N53_00_W115_00",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "bbox": [
+    -115.000625,
+    53.000416666666666,
+    -114.000625,
+    54.000416666666666
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+  ]
+}
