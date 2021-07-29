@@ -1,14 +1,14 @@
-# stactools-ephemeral
+# stactools-cop-dem
 
-- Name: ephemeral
-- Package: `stactools.ephemeral`
-- PyPI: https://pypi.org/project/stactools-ephemeral/
+- Name: cop-dem
+- Package: `stactools.cop_dem`
+- PyPI: https://pypi.org/project/stactools-cop-dem/
 - Owner: @githubusername
 - Dataset homepage: http://example.com
 - STAC extensions used:
   - [proj](https://github.com/stac-extensions/projection/)
 - Extra fields:
-  - `ephemeral:custom`: A custom attribute
+  - `cop-dem:custom`: A custom attribute
 
 A short description of the package and its usage.
 
@@ -24,7 +24,7 @@ A short description of the package and its usage.
 Description of the command line functions
 
 ```bash
-$ stac ephemeral create-item source destination
+$ stac cop-dem create-item source destination
 ```
 
-Use `stac ephemeral --help` to see all subcommands and options.
+Use `stac cop-dem --help` to see all subcommands and options.

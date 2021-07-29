@@ -1,4 +1,4 @@
-name: stactools-ephemeral
+name: stactools-cop-dem
 channels:
   - conda-forge
   - defaults
