@@ -3,6 +3,7 @@ from unittest import TestCase
 
 from pystac import Provider, MediaType
 from pystac.extensions.projection import ProjectionExtension
+from pystac.provider import ProviderRole
 
 from stactools.cop_dem import stac
 
@@ -31,19 +32,22 @@ class StacTest(TestCase):
         common_metadata = item.common_metadata
         self.assertEqual(common_metadata.platform, "TanDEM-X")
         self.assertEqual(common_metadata.gsd, 30)
-        self.assertEqual(common_metadata.providers, [
-            Provider("European Space  Agency",
-                     roles=["licensor"],
+        expected_providers = [
+            Provider("European Space Agency",
+                     roles=[ProviderRole.LICENSOR],
                      url=("https://spacedata.copernicus.eu/documents/20126/0/"
                           "CSCDA_ESA_Mission-specific+Annex.pdf")),
             Provider("Sinergise",
-                     roles=["producer", "processor"],
+                     roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
                      url="https://registry.opendata.aws/copernicus-dem/"),
             Provider("OpenTopography",
-                     roles=["host"],
+                     roles=[ProviderRole.HOST],
                      url=("https://portal.opentopography.org/"
                           "datasetMetadata?otCollectionID=OT.032021.4326.1"))
-        ])
+        ]
+        for expected, actual in zip(expected_providers,
+                                    common_metadata.providers):
+            self.assertDictEqual(expected.to_dict(), actual.to_dict())
         self.assertEqual(common_metadata.license, "proprietary")
 
         projection = ProjectionExtension.ext(item)
@@ -87,19 +91,22 @@ class StacTest(TestCase):
         common_metadata = item.common_metadata
         self.assertEqual(common_metadata.platform, "TanDEM-X")
         self.assertEqual(common_metadata.gsd, 90)
-        self.assertEqual(common_metadata.providers, [
-            Provider("European Space  Agency",
-                     roles=["licensor"],
+        expected_providers = [
+            Provider("European Space Agency",
+                     roles=[ProviderRole.LICENSOR],
                      url=("https://spacedata.copernicus.eu/documents/20126/0/"
                           "CSCDA_ESA_Mission-specific+Annex.pdf")),
             Provider("Sinergise",
-                     roles=["producer", "processor"],
+                     roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
                      url="https://registry.opendata.aws/copernicus-dem/"),
             Provider("OpenTopography",
-                     roles=["host"],
+                     roles=[ProviderRole.HOST],
                      url=("https://portal.opentopography.org/"
                           "datasetMetadata?otCollectionID=OT.032021.4326.1"))
-        ])
+        ]
+        for expected, actual in zip(expected_providers,
+                                    common_metadata.providers):
+            self.assertDictEqual(expected.to_dict(), actual.to_dict())
         self.assertEqual(common_metadata.license, "proprietary")
 
         projection = ProjectionExtension.ext(item)
