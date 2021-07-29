@@ -17,16 +17,15 @@ from stactools.cop_dem.constants import (COP_DEM_LINKS, COP_DEM_PROVIDERS,
 
 def create_item(href: str,
                 read_href_modifier: Optional[ReadHrefModifier] = None) -> Item:
-    """Creates a STAC Item from a single tile of ALOS DEM data."""
+    """Creates a STAC Item from a single tile of Copernicus DEM data."""
     if read_href_modifier:
         modified_href = read_href_modifier(href)
     else:
         modified_href = href
     with rasterio.open(modified_href) as dataset:
         if dataset.crs.to_epsg() != COP_DEM_EPSG:
-            raise ValueError(
-                f"Dataset {href} is not EPSG:{COP_DEM_EPSG}, which is required for ALOS DEM data"
-            )
+            raise ValueError(f"Dataset {href} is not EPSG:{COP_DEM_EPSG}, "
+                             "which is required for Copernicus DEM data")
         bbox = list(dataset.bounds)
         geometry = mapping(box(*bbox))
         transform = dataset.transform
