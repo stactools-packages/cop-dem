@@ -4,7 +4,9 @@
 - Package: `stactools.cop_dem`
 - PyPI: https://pypi.org/project/stactools-cop-dem/
 - Owner: @justinfisk
-- Dataset homepage: http://example.com
+- Dataset homepages:
+  - https://copernicus-dem-30m.s3.amazonaws.com/readme.html
+  - https://portal.opentopography.org/datasetMetadata?otCollectionID=OT.032021.4326.1
 - STAC extensions used:
   - [proj](https://github.com/stac-extensions/projection/)
 - Extra fields: none
