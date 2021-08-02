@@ -1,19 +1,19 @@
 import datetime
 
-from pystac import Provider, Link
+from pystac import Provider, Link, ProviderRole
 
 COP_DEM_PLATFORM = "TanDEM-X"
 COP_DEM_EPSG = 4326
 COP_DEM_PROVIDERS = [
-    Provider("European Space  Agency",
-             roles=["licensor"],
+    Provider("European Space Agency",
+             roles=[ProviderRole.LICENSOR],
              url=("https://spacedata.copernicus.eu/documents/20126/0/"
                   "CSCDA_ESA_Mission-specific+Annex.pdf")),
     Provider("Sinergise",
-             roles=["producer", "processor"],
+             roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
              url="https://registry.opendata.aws/copernicus-dem/"),
     Provider("OpenTopography",
-             roles=["host"],
+             roles=[ProviderRole.HOST],
              url=("https://portal.opentopography.org/"
                   "datasetMetadata?otCollectionID=OT.032021.4326.1"))
 ]

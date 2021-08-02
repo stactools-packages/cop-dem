@@ -35,7 +35,7 @@ def create_item(href: str,
                     bbox=bbox,
                     datetime=OPENTOPOGRAPHY_DATETIME,
                     properties={},
-                    stac_extensions={})
+                    stac_extensions=[])
 
     p = re.compile(r'Copernicus_DSM_COG_(\d\d)_(.*)_DEM.tif')
     m = p.match(os.path.basename(href))
