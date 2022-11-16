@@ -11,6 +11,7 @@ from tests import test_data
 
 
 class StacTest(TestCase):
+
     def setUp(self):
         self.glo30_path = test_data.get_external_data(
             "Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif")

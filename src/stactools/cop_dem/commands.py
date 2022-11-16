@@ -5,6 +5,7 @@ from stactools.cop_dem import stac
 
 def create_cop_dem_command(cli):
     """Creates the COP DEM stactools commands."""
+
     @cli.group("cop-dem", short_help="Work with Copernicus DEM data.")
     def cop_dem():
         pass
