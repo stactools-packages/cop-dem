@@ -28,12 +28,8 @@ def create_cop_dem_command(cli):
     @cop_dem.command("create-collection",
                      short_help="Creates a STAC Collection for Copernicus DEM."
                      )
+    @click.argument("product")
     @click.argument("destination")
-    @click.argument("-p",
-                    "--product",
-                    default='glo30',
-                    type=str,
-                    help="The DEM product, glo30 or glo90")
     @click.option("-u",
                   "--url",
                   default='',
@@ -47,6 +43,7 @@ def create_cop_dem_command(cli):
         """ Creates a STAC Collection
 
         Args:
+        product: The DEM product, glo30 or glo90
 
         """
         collection = stac.create_collection(product)
