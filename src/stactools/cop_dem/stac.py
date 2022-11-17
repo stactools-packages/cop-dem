@@ -1,7 +1,8 @@
 import os.path
 import re
 from typing import Optional
-from pystac.asset import Asset
+# from pystac.asset import Asset
+from pystac import (Collection, Extent, Asset, SpatialExtent, TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
 from pystac.media_type import MediaType
 
@@ -12,7 +13,9 @@ from pystac import Item
 from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem.constants import (COP_DEM_LINKS, COP_DEM_PROVIDERS,
                                          OPENTOPOGRAPHY_DATETIME,
-                                         COP_DEM_PLATFORM, COP_DEM_EPSG)
+                                         COP_DEM_PLATFORM, COP_DEM_EPSG,
+                                         COP_DEM_SPATIAL_EXTENT,
+                                         COP_DEM_TEMPORAL_EXTENT)
 
 
 def create_item(href: str,
@@ -70,3 +73,33 @@ def create_item(href: str,
     projection.shape = shape
 
     return item
+
+
+def create_collection(product: str) -> Collection:
+    """Create a STAC Collection
+
+    This function includes logic to extract all relevant metadata from
+    an asset describing the STAC collection and/or metadata coded into an
+    accompanying constants.py file.
+
+    See `Collection<https://pystac.readthedocs.io/en/latest/api.html#collection>`_.
+
+    Args:
+        Product (str): MOS for mosiac, FNF for Forest/Non-Forest
+
+    Returns:
+        Item: STAC Item object
+
+    Returns:
+        Collection: STAC Collection object
+    """
+
+    # TODO: Stub, Fill in actual collection information
+    collection = Collection(
+        id="",
+        description="",
+        extent=Extent(SpatialExtent(COP_DEM_SPATIAL_EXTENT),
+                      TemporalExtent([COP_DEM_TEMPORAL_EXTENT])),
+    )
+
+    return collection

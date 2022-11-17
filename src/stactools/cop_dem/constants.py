@@ -1,7 +1,16 @@
-import datetime
+from datetime import datetime, timezone
+from typing import Optional
 
 from pystac import Provider, Link, ProviderRole
+from pystac.utils import str_to_datetime
 
+COP_DEM_SPATIAL_EXTENT = [[-180., 90., 180., -90.]]
+COP_DEM_COLLECTION_START: Optional[datetime] = str_to_datetime(
+    "2021-04-22T00:00:00Z")
+COP_DEM_COLLECTION_END: Optional[datetime] = str_to_datetime(
+    "2021-04-22T00:00:00Z")
+COP_DEM_TEMPORAL_EXTENT = [COP_DEM_COLLECTION_START,
+                           COP_DEM_COLLECTION_END]  # TODO: find the dates
 COP_DEM_PLATFORM = "TanDEM-X"
 COP_DEM_EPSG = 4326
 COP_DEM_PROVIDERS = [
@@ -30,7 +39,4 @@ COP_DEM_LINKS = [
 # on OpenTopography. As of this writing, the data were last updated at this
 # time. This information was taken from
 # https://portal.opentopography.org/datasetMetadata?otCollectionID=OT.112016.4326.2.
-OPENTOPOGRAPHY_DATETIME = datetime.datetime(2021,
-                                            4,
-                                            22,
-                                            tzinfo=datetime.timezone.utc)
+OPENTOPOGRAPHY_DATETIME = datetime(2021, 4, 22, tzinfo=timezone.utc)
