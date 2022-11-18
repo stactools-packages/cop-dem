@@ -2,7 +2,10 @@ from datetime import datetime, timezone
 from typing import Optional
 
 from pystac import Provider, Link, ProviderRole
+from pystac.extensions.item_assets import AssetDefinition
 from pystac.utils import str_to_datetime
+from pystac.media_type import MediaType
+
 
 COP_DEM_SPATIAL_EXTENT = [[-180., 90., 180., -90.]]
 COP_DEM_COLLECTION_START: Optional[datetime] = str_to_datetime(
@@ -35,8 +38,10 @@ COP_DEM_LINKS = [
         extra_fields={"description": "Also includes data usage information"})
 ]
 
-# This stactools package was created to interact with the Copernicus DEM data hosted
-# on OpenTopography. As of this writing, the data were last updated at this
-# time. This information was taken from
-# https://portal.opentopography.org/datasetMetadata?otCollectionID=OT.112016.4326.2.
-OPENTOPOGRAPHY_DATETIME = datetime(2021, 4, 22, tzinfo=timezone.utc)
+COP_DEM_ASSETS = {
+    "data":
+    AssetDefinition({
+        "type": MediaType.COG,
+        "role": "data",
+    })
+}

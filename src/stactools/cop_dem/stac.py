@@ -2,8 +2,10 @@ import os.path
 import re
 from typing import Optional
 # from pystac.asset import Asset
-from pystac import (Collection, Extent, Asset, SpatialExtent, TemporalExtent)
+from pystac import (Collection, Extent, Asset, Summaries,
+                    SpatialExtent, TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.media_type import MediaType
 
 import rasterio
@@ -11,11 +13,7 @@ from shapely.geometry import mapping, box
 from pystac import Item
 
 from stactools.core.io import ReadHrefModifier
-from stactools.cop_dem.constants import (COP_DEM_LINKS, COP_DEM_PROVIDERS,
-                                         OPENTOPOGRAPHY_DATETIME,
-                                         COP_DEM_PLATFORM, COP_DEM_EPSG,
-                                         COP_DEM_SPATIAL_EXTENT,
-                                         COP_DEM_TEMPORAL_EXTENT)
+from stactools.cop_dem import constants as co
 
 
 def create_item(href: str,
@@ -26,8 +24,8 @@ def create_item(href: str,
     else:
         modified_href = href
     with rasterio.open(modified_href) as dataset:
-        if dataset.crs.to_epsg() != COP_DEM_EPSG:
-            raise ValueError(f"Dataset {href} is not EPSG:{COP_DEM_EPSG}, "
+        if dataset.crs.to_epsg() != co.COP_DEM_EPSG:
+            raise ValueError(f"Dataset {href} is not EPSG:{co.COP_DEM_EPSG}, "
                              "which is required for Copernicus DEM data")
         bbox = list(dataset.bounds)
         geometry = mapping(box(*bbox))
@@ -36,7 +34,7 @@ def create_item(href: str,
         item = Item(id=os.path.splitext(os.path.basename(href))[0],
                     geometry=geometry,
                     bbox=bbox,
-                    datetime=OPENTOPOGRAPHY_DATETIME,
+                    datetime=co.COP_DEM_COLLECTION_START,
                     properties={},
                     stac_extensions=[])
 
@@ -53,10 +51,10 @@ def create_item(href: str,
     else:
         raise ValueError("unable to parse {}".format(href))
 
-    item.add_links(COP_DEM_LINKS)
-    item.common_metadata.platform = COP_DEM_PLATFORM
+    item.add_links(co.COP_DEM_LINKS)
+    item.common_metadata.platform = co.COP_DEM_PLATFORM
     item.common_metadata.gsd = gsd
-    item.common_metadata.providers = COP_DEM_PROVIDERS
+    item.common_metadata.providers = co.COP_DEM_PROVIDERS
     item.common_metadata.license = "proprietary"
 
     item.add_asset(
@@ -68,7 +66,7 @@ def create_item(href: str,
               roles=["data"]))
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
-    projection.epsg = COP_DEM_EPSG
+    projection.epsg = co.COP_DEM_EPSG
     projection.transform = transform[0:6]
     projection.shape = shape
 
@@ -85,7 +83,7 @@ def create_collection(product: str) -> Collection:
     See `Collection<https://pystac.readthedocs.io/en/latest/api.html#collection>`_.
 
     Args:
-        Product (str): MOS for mosiac, FNF for Forest/Non-Forest
+        Product (str): glo-30 or glo-90
 
     Returns:
         Item: STAC Item object
@@ -93,13 +91,40 @@ def create_collection(product: str) -> Collection:
     Returns:
         Collection: STAC Collection object
     """
+    if product == "glo-30":
+        summaries = {
+        "gsd":30,
+        "platform": co.COP_DEM_PLATFORM,
+        # "instruments": ,
+        }
+    elif product == "glo-90":
+        summaries = {
+        "gsd":90,
+        "platform": co.COP_DEM_PLATFORM,
+        # "instruments": ,
+        } 
+    else: {
+        # TODO: Raise and error no matching product
+        }
 
     # TODO: Stub, Fill in actual collection information
     collection = Collection(
-        id="",
+        id=f"cop-dem-{product}",
+        title="",
         description="",
-        extent=Extent(SpatialExtent(COP_DEM_SPATIAL_EXTENT),
-                      TemporalExtent([COP_DEM_TEMPORAL_EXTENT])),
+        license="",
+        providers="",
+        keywords="",
+        #catalog_type=
+        summaries=Summaries(summaries),
+        extent=Extent(SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
+                      TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT])),
+        stac_extensions=[
+            ItemAssetsExtension.get_schema_uri(),
+        ]
     )
+
+    assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
+    assets.item_assets = co.COP_DEM_ASSETS
 
     return collection
