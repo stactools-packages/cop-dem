@@ -92,16 +92,16 @@ def create_collection(product: str) -> Collection:
     Returns:
         Collection: STAC Collection object
     """
-    if product == "glo-30":
+    if product.lower() == "glo-30":
         summaries = {
-            "gsd": 30,
-            "platform": co.COP_DEM_PLATFORM,
+            "gsd": [30],
+            "platform": [co.COP_DEM_PLATFORM],
             # "instruments": ,
         }
-    elif product == "glo-90":
+    elif product.lower() == "glo-90":
         summaries = {
-            "gsd": 90,
-            "platform": co.COP_DEM_PLATFORM,
+            "gsd": [90],
+            "platform": [co.COP_DEM_PLATFORM],
             # "instruments": ,
         }
     else:
@@ -111,9 +111,9 @@ def create_collection(product: str) -> Collection:
 
     # TODO: Stub, Fill in actual collection information
     collection = Collection(
-        id=f"cop-dem-{product}",
-        title="",
-        description="",
+        id=f"cop-dem-{product.lower()}",
+        title=f"Copernicus DEM {product.upper()}",
+        description=co.COP_DEM_DESCRIPTION,
         license="proprietary",
         providers=co.COP_DEM_PROVIDERS,  # TODO how to vary the host
         keywords=['DEM', 'COPERNICUS'],
