@@ -147,3 +147,16 @@ class StacTest(TestCase):
 
         _ = stac.create_item(self.glo30_path, read_href_modifier=do_it)
         self.assertTrue(done, "Didn't do it")
+
+    def test_create_collection(self):
+        # Write tests for each for the creation of a STAC Collection
+        # Create the STAC Collection...
+        collection = stac.create_collection("glo-30")
+        collection.set_self_href("")
+
+        # Check that it has some required attributes
+        self.assertEqual(collection.id, "cop-dem-glo-30")
+        # self.assertEqual(collection.other_attr...
+
+        # Validate
+        collection.validate()

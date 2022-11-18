@@ -1,11 +1,10 @@
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Optional
 
 from pystac import Provider, Link, ProviderRole
 from pystac.extensions.item_assets import AssetDefinition
 from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
-
 
 COP_DEM_SPATIAL_EXTENT = [[-180., 90., 180., -90.]]
 COP_DEM_COLLECTION_START: Optional[datetime] = str_to_datetime(
@@ -39,8 +38,7 @@ COP_DEM_LINKS = [
 ]
 
 COP_DEM_ASSETS = {
-    "data":
-    AssetDefinition({
+    "data": AssetDefinition({
         "type": MediaType.COG,
         "role": "data",
     })

@@ -2,10 +2,11 @@ import os.path
 import re
 from typing import Optional
 # from pystac.asset import Asset
-from pystac import (Collection, Extent, Asset, Summaries,
-                    SpatialExtent, TemporalExtent)
+from pystac import (Collection, Extent, Asset, Summaries, SpatialExtent,
+                    TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
+from pystac.extensions.raster import RasterExtension
 from pystac.media_type import MediaType
 
 import rasterio
@@ -93,18 +94,19 @@ def create_collection(product: str) -> Collection:
     """
     if product == "glo-30":
         summaries = {
-        "gsd":30,
-        "platform": co.COP_DEM_PLATFORM,
-        # "instruments": ,
+            "gsd": 30,
+            "platform": co.COP_DEM_PLATFORM,
+            # "instruments": ,
         }
     elif product == "glo-90":
         summaries = {
-        "gsd":90,
-        "platform": co.COP_DEM_PLATFORM,
-        # "instruments": ,
-        } 
-    else: {
-        # TODO: Raise and error no matching product
+            "gsd": 90,
+            "platform": co.COP_DEM_PLATFORM,
+            # "instruments": ,
+        }
+    else:
+        {
+            # TODO: Raise and error no matching product
         }
 
     # TODO: Stub, Fill in actual collection information
@@ -112,17 +114,18 @@ def create_collection(product: str) -> Collection:
         id=f"cop-dem-{product}",
         title="",
         description="",
-        license="",
-        providers="",
-        keywords="",
-        #catalog_type=
+        license="proprietary",
+        providers=co.COP_DEM_PROVIDERS,  # TODO how to vary the host
+        keywords=['DEM', 'COPERNICUS'],
+        # catalog_type=
         summaries=Summaries(summaries),
         extent=Extent(SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
                       TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT])),
         stac_extensions=[
             ItemAssetsExtension.get_schema_uri(),
-        ]
-    )
+            ProjectionExtension.get_schema_uri(),
+            RasterExtension.get_schema_uri(),
+        ])
 
     assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
     assets.item_assets = co.COP_DEM_ASSETS

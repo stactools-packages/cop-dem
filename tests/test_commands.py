@@ -23,3 +23,7 @@ class CreateItemTest(CliTestCase):
             self.assertEqual(result.exit_code, 0)
             item = pystac.read_file(outfile)
             item.validate()
+
+    def test_create_collection(self):
+        # TODO: add test for collection creation
+        pass
