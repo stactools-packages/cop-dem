@@ -2,8 +2,8 @@ import os.path
 import re
 from typing import Optional
 # from pystac.asset import Asset
-from pystac import (Collection, Extent, Asset, Summaries, SpatialExtent,
-                    TemporalExtent)
+from pystac import (CatalogType, Collection, Extent, Asset, Summaries,
+                    SpatialExtent, TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.raster import RasterExtension
@@ -115,12 +115,12 @@ def create_collection(product: str) -> Collection:
         title=f"Copernicus DEM {product.upper()}",
         description=co.COP_DEM_DESCRIPTION,
         license="proprietary",
-        providers=co.COP_DEM_PROVIDERS,  # TODO how to vary the host
-        keywords=['DEM', 'COPERNICUS'],
-        # catalog_type=
+        keywords=co.COP_DEM_KEYWORDS,
+        catalog_type=CatalogType.RELATIVE_PUBLISHED,
         summaries=Summaries(summaries),
         extent=Extent(SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
                       TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT])),
+        providers=co.COP_DEM_PROVIDERS,  # TODO how to vary the host
         stac_extensions=[
             ItemAssetsExtension.get_schema_uri(),
             ProjectionExtension.get_schema_uri(),

@@ -6,7 +6,7 @@ from pystac.extensions.item_assets import AssetDefinition
 from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
 
-COP_DEM_SPATIAL_EXTENT = [[-180., 90., 180., -90.]]
+COP_DEM_SPATIAL_EXTENT = [[-180., -90., 180., 90.]]
 COP_DEM_COLLECTION_START: Optional[datetime] = str_to_datetime(
     "2021-04-22T00:00:00Z")
 COP_DEM_COLLECTION_END: Optional[datetime] = str_to_datetime(
@@ -15,6 +15,7 @@ COP_DEM_TEMPORAL_EXTENT = [COP_DEM_COLLECTION_START,
                            COP_DEM_COLLECTION_END]  # TODO: find the dates
 COP_DEM_PLATFORM = "TanDEM-X"
 COP_DEM_EPSG = 4326
+COP_DEM_KEYWORDS = ['DEM', 'COPERNICUS', 'DSM', 'Elevation']
 COP_DEM_PROVIDERS = [
     Provider("European Space Agency",
              roles=[ProviderRole.LICENSOR],
