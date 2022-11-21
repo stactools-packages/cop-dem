@@ -18,7 +18,8 @@ from stactools.cop_dem import constants as co
 
 
 def create_item(href: str,
-                read_href_modifier: Optional[ReadHrefModifier] = None) -> Item:
+                read_href_modifier: Optional[ReadHrefModifier] = None,
+                host: Optional[str] = None) -> Item:
     """Creates a STAC Item from a single tile of Copernicus DEM data."""
     if read_href_modifier:
         modified_href = read_href_modifier(href)
@@ -55,7 +56,11 @@ def create_item(href: str,
     item.add_links(co.COP_DEM_LINKS)
     item.common_metadata.platform = co.COP_DEM_PLATFORM
     item.common_metadata.gsd = gsd
-    item.common_metadata.providers = co.COP_DEM_PROVIDERS
+    if host and (host_provider := co.COP_DEM_HOST.get(host)):
+        providers = [*co.COP_DEM_PROVIDERS, host_provider]
+    else:
+        providers = co.COP_DEM_PROVIDERS
+    item.common_metadata.providers = providers
     item.common_metadata.license = "proprietary"
 
     item.add_asset(

@@ -19,8 +19,10 @@ def create_cop_dem_command(cli):
     @click.option("--validate/--no-validate",
                   default=True,
                   help="Validate the item before saving")
-    def create_item_command(source, destination, validate):
-        item = stac.create_item(source)
+    @click.option("--host", default=None, help="Set PROVIDER HOST")
+    def create_item_command(source: str, destination: str, validate: bool,
+                            host: str):
+        item = stac.create_item(source, host=host)
         if validate:
             item.validate()
         item.save_object(dest_href=destination)
@@ -38,7 +40,7 @@ def create_cop_dem_command(cli):
     @click.option("--validate/--no-validate",
                   default=True,
                   help="Validate the item before saving")
-    @click.option("--host", help="Set PROVIDER HOST")
+    @click.option("--host", default=None, help="Set PROVIDER HOST")
     def create_collection_command(destination: str, product: str, url: str,
                                   validate: bool, host: str):
         """ Creates a STAC Collection
@@ -47,10 +49,7 @@ def create_cop_dem_command(cli):
         product: The DEM product, glo30 or glo90
 
         """
-        if host:
-            collection = stac.create_collection(product, host)
-        else:
-            collection = stac.create_collection(product)
+        collection = stac.create_collection(product, host=host)
         json_path = os.path.join(destination, f'{collection.id}.json')
         collection.set_self_href(
             os.path.join(url, collection.id, os.path.basename(json_path)))
