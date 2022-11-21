@@ -24,11 +24,19 @@ COP_DEM_PROVIDERS = [
     Provider("Sinergise",
              roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
              url="https://registry.opendata.aws/copernicus-dem/"),
+]
+# Various HOST options
+COP_DEM_HOST = {
+    "OT":
     Provider("OpenTopography",
              roles=[ProviderRole.HOST],
              url=("https://portal.opentopography.org/"
-                  "datasetMetadata?otCollectionID=OT.032021.4326.1"))
-]
+                  "datasetMetadata?otCollectionID=OT.032021.4326.1")),
+    "AWS":
+    Provider("Singergise",
+             roles=[ProviderRole.HOST],
+             url="https://registry.opendata.aws/copernicus-dem/")
+}
 COP_DEM_LINKS = [
     Link(
         "handbook",

@@ -38,15 +38,19 @@ def create_cop_dem_command(cli):
     @click.option("--validate/--no-validate",
                   default=True,
                   help="Validate the item before saving")
+    @click.option("--host", help="Set PROVIDER HOST")
     def create_collection_command(destination: str, product: str, url: str,
-                                  validate: bool):
+                                  validate: bool, host: str):
         """ Creates a STAC Collection
 
         Args:
         product: The DEM product, glo30 or glo90
 
         """
-        collection = stac.create_collection(product)
+        if host:
+            collection = stac.create_collection(product, host)
+        else:
+            collection = stac.create_collection(product)
         json_path = os.path.join(destination, f'{collection.id}.json')
         collection.set_self_href(
             os.path.join(url, collection.id, os.path.basename(json_path)))

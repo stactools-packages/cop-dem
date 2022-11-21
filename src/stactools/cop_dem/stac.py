@@ -74,7 +74,7 @@ def create_item(href: str,
     return item
 
 
-def create_collection(product: str) -> Collection:
+def create_collection(product: str, host: Optional[str] = None) -> Collection:
     """Create a STAC Collection
 
     This function includes logic to extract all relevant metadata from
@@ -106,26 +106,31 @@ def create_collection(product: str) -> Collection:
         }
     else:
         {
-            # TODO: Raise and error no matching product
+            # TODO: Raise and error no matching product?
         }
 
-    # TODO: Stub, Fill in actual collection information
-    collection = Collection(
-        id=f"cop-dem-{product.lower()}",
-        title=f"Copernicus DEM {product.upper()}",
-        description=co.COP_DEM_DESCRIPTION,
-        license="proprietary",
-        keywords=co.COP_DEM_KEYWORDS,
-        catalog_type=CatalogType.RELATIVE_PUBLISHED,
-        summaries=Summaries(summaries),
-        extent=Extent(SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
-                      TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT])),
-        providers=co.COP_DEM_PROVIDERS,  # TODO how to vary the host
-        stac_extensions=[
-            ItemAssetsExtension.get_schema_uri(),
-            ProjectionExtension.get_schema_uri(),
-            RasterExtension.get_schema_uri(),
-        ])
+    # Allow host to be selected by cli option
+    if host and (host_provider := co.COP_DEM_HOST.get(host)):
+        providers = [*co.COP_DEM_PROVIDERS, host_provider]
+    else:
+        providers = co.COP_DEM_PROVIDERS
+
+    collection = Collection(id=f"cop-dem-{product.lower()}",
+                            title=f"Copernicus DEM {product.upper()}",
+                            description=co.COP_DEM_DESCRIPTION,
+                            license="proprietary",
+                            keywords=co.COP_DEM_KEYWORDS,
+                            catalog_type=CatalogType.RELATIVE_PUBLISHED,
+                            summaries=Summaries(summaries),
+                            extent=Extent(
+                                SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
+                                TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT])),
+                            providers=providers,
+                            stac_extensions=[
+                                ItemAssetsExtension.get_schema_uri(),
+                                ProjectionExtension.get_schema_uri(),
+                                RasterExtension.get_schema_uri(),
+                            ])
 
     assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
     assets.item_assets = co.COP_DEM_ASSETS
