@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- create collection
+- create collection + matching tests
+- New: `--host` option to specify a Provider HOST from a list of options in constants. `AWS` and `OT` are the current valid options.
 
 ### Deprecated
 
