@@ -33,7 +33,7 @@ COP_DEM_HOST = {
              url=("https://portal.opentopography.org/"
                   "datasetMetadata?otCollectionID=OT.032021.4326.1")),
     "AWS":
-    Provider("Singergise",
+    Provider("Sinergise",
              roles=[ProviderRole.HOST],
              url="https://registry.opendata.aws/copernicus-dem/")
 }
