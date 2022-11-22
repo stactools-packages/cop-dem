@@ -2,7 +2,7 @@ import os.path
 import re
 from typing import Optional
 # from pystac.asset import Asset
-from pystac import (CatalogType, Collection, Extent, Asset, Summaries,
+from pystac import (CatalogType, Collection, Extent, Asset, Summaries, Link,
                     SpatialExtent, TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
@@ -45,8 +45,10 @@ def create_item(href: str,
     if m:
         if m.group(1) == '30':
             gsd = 90
+            collection = f"cop-dem-glo-{gsd}"
         elif m.group(1) == '10':
             gsd = 30
+            collection = f"cop-dem-glo-{gsd}"
         else:
             raise ValueError("unknown resolution {}".format(m.group(1)))
         title = m.group(2)
@@ -54,6 +56,13 @@ def create_item(href: str,
         raise ValueError("unable to parse {}".format(href))
 
     item.add_links(co.COP_DEM_LINKS)
+    # Valid stac item requires collection
+    # collection requires a matching Link object
+    item.collection_id = collection
+    root_href = '' # TODO: should this become and optional arg?
+    item.links.append(
+        Link(rel="collection",
+             target=os.path.join(root_href, f"{collection}.json")))
     item.common_metadata.platform = co.COP_DEM_PLATFORM
     item.common_metadata.gsd = gsd
     if host and (host_provider := co.COP_DEM_HOST.get(host)):
@@ -136,6 +145,8 @@ def create_collection(product: str, host: Optional[str] = None) -> Collection:
                                 ProjectionExtension.get_schema_uri(),
                                 RasterExtension.get_schema_uri(),
                             ])
+
+    collection.add_links(co.COP_DEM_LINKS)
 
     assets = ItemAssetsExtension.ext(collection, add_if_missing=True)
     assets.item_assets = co.COP_DEM_ASSETS

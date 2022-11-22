@@ -53,16 +53,8 @@ COP_DEM_LINKS = [
 COP_DEM_ASSETS = {
     "data": AssetDefinition({
         "type": MediaType.COG,
-        "role": "data",
+        "roles": ["data"],
     })
 }
 
-COP_DEM_DESCRIPTION = '''The Copernicus DEM is a Digital Surface Model (DSM)
- which represents the surface of the Earth including buildings,
- infrastructure and vegetation. We provide two instances of Copernicus DEM
- named GLO-30 Public and GLO-90. GLO-90 provides worldwide coverage at 90 meters.
- GLO-30 Public provides limited worldwide coverage at 30 meters because a small subset
- of tiles covering specific countries are not yet released to the public
- by the Copernicus Programme. Note that in both cases ocean areas do not have tiles,
- there one can assume height values equal to zero.
- Data is provided as Cloud Optimized GeoTIFFs and comes from Copernicus DEM 2021 release.'''
+COP_DEM_DESCRIPTION = '''The Copernicus DEM is a Digital Surface Model (DSM) which represents the surface of the Earth including buildings, infrastructure and vegetation. We provide two instances of Copernicus DEM named GLO-30 Public and GLO-90. GLO-90 provides worldwide coverage at 90 meters. GLO-30 Public provides limited worldwide coverage at 30 meters because a small subset of tiles covering specific countries are not yet released to the public by the Copernicus Programme. Note that in both cases ocean areas do not have tiles, there one can assume height values equal to zero. Data is provided as Cloud Optimized GeoTIFFs and comes from Copernicus DEM 2021 release.'''  # noqa: E501
