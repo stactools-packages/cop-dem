@@ -65,10 +65,16 @@ def create_item(href: str,
              target=os.path.join(root_href, f"{collection}.json")))
     item.common_metadata.platform = co.COP_DEM_PLATFORM
     item.common_metadata.gsd = gsd
+
+    if host and host not in co.COP_DEM_HOST.keys():
+        raise ValueError(
+            f"Invalid host: {host}. Must be one of {list(co.COP_DEM_HOST.keys())}"
+        )
     if host and (host_provider := co.COP_DEM_HOST.get(host)):
         providers = [*co.COP_DEM_PROVIDERS, host_provider]
     else:
         providers = co.COP_DEM_PROVIDERS
+
     item.common_metadata.providers = providers
     item.common_metadata.license = "proprietary"
 
