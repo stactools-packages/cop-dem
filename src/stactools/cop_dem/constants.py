@@ -6,6 +6,7 @@ from pystac.extensions.item_assets import AssetDefinition
 from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
 
+COP_DEM_PRODUCTS = ['glo-30', 'glo-90']
 COP_DEM_SPATIAL_EXTENT = [[-180., -90., 180., 90.]]
 COP_DEM_COLLECTION_START: Optional[datetime] = str_to_datetime(
     "2021-04-22T00:00:00Z")

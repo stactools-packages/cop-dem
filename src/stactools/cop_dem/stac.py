@@ -59,7 +59,7 @@ def create_item(href: str,
     # Valid stac item requires collection
     # collection requires a matching Link object
     item.collection_id = collection
-    root_href = '' # TODO: should this become and optional arg?
+    root_href = ''  # TODO: should this become and optional arg?
     item.links.append(
         Link(rel="collection",
              target=os.path.join(root_href, f"{collection}.json")))
@@ -119,11 +119,15 @@ def create_collection(product: str, host: Optional[str] = None) -> Collection:
             # "instruments": ,
         }
     else:
-        {
-            # TODO: Raise and error no matching product?
-        }
+        raise ValueError(
+            f"{product} is not a valid product. Must be one of {co.COP_DEM_PRODUCTS}"
+        )
 
     # Allow host to be selected by cli option
+    if host and host not in co.COP_DEM_HOST.keys():
+        raise ValueError(
+            f"Invalid host: {host}. Must be one of {list(co.COP_DEM_HOST.keys())}"
+        )
     if host and (host_provider := co.COP_DEM_HOST.get(host)):
         providers = [*co.COP_DEM_PROVIDERS, host_provider]
     else:
