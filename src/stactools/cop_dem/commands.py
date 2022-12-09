@@ -2,6 +2,7 @@ import click
 import os
 
 from stactools.cop_dem import stac
+from stactools.cop_dem import constants as co
 
 
 def create_cop_dem_command(cli):
@@ -19,8 +20,21 @@ def create_cop_dem_command(cli):
     @click.option("--validate/--no-validate",
                   default=True,
                   help="Validate the item before saving")
-    def create_item_command(source, destination, validate):
-        item = stac.create_item(source)
+    @click.option("--host",
+                  type=click.Choice(co.COP_DEM_HOST.keys(),
+                                    case_sensitive=False),
+                  default=None,
+                  help="Set PROVIDER HOST")
+    def create_item_command(source: str, destination: str, validate: bool,
+                            host: str):
+        """ Creates a STAC Collection
+
+        source: Path to input item
+
+        destination: Folder to output json
+
+        """
+        item = stac.create_item(source, host=host)
         if validate:
             item.validate()
         item.save_object(dest_href=destination)
@@ -28,8 +42,8 @@ def create_cop_dem_command(cli):
     @cop_dem.command("create-collection",
                      short_help="Creates a STAC Collection for Copernicus DEM."
                      )
-    @click.argument("product")
-    @click.argument("destination")
+    @click.argument("product", type=click.Choice(['glo-30', 'glo-90']))
+    @click.argument("destination", type=click.Path(exists=True))
     @click.option("-u",
                   "--url",
                   default='',
@@ -38,15 +52,21 @@ def create_cop_dem_command(cli):
     @click.option("--validate/--no-validate",
                   default=True,
                   help="Validate the item before saving")
+    @click.option("--host",
+                  type=click.Choice(co.COP_DEM_HOST.keys(),
+                                    case_sensitive=False),
+                  default=None,
+                  help="Set PROVIDER HOST")
     def create_collection_command(destination: str, product: str, url: str,
-                                  validate: bool):
+                                  validate: bool, host: str):
         """ Creates a STAC Collection
 
-        Args:
-        product: The DEM product, glo30 or glo90
+        product: The DEM product, glo-30 or glo-90
+
+        destination: Folder to output json
 
         """
-        collection = stac.create_collection(product)
+        collection = stac.create_collection(product, host=host)
         json_path = os.path.join(destination, f'{collection.id}.json')
         collection.set_self_href(
             os.path.join(url, collection.id, os.path.basename(json_path)))
