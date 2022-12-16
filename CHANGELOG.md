@@ -8,16 +8,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- create collection + matching tests
+- create-collection and matching tests for both glo-30 and glo-90
 - New: `--host` option to specify a Provider HOST from a list of options in constants. `AWS` and `OT` are the current valid options.
+- added python 3.10
 
 ### Deprecated
 
-- Nothing.
+- Nothing
 
 ### Removed
 
-- Nothing.
+- remove python 3.7 support
 
 ### Fixed
 
