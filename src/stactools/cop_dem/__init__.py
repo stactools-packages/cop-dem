@@ -8,4 +8,4 @@ def register_plugin(registry):
     registry.register_subcommand(commands.create_cop_dem_command)
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.0"

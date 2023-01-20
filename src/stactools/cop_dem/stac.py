@@ -1,7 +1,7 @@
 import os.path
 import re
 from typing import Optional
-# from pystac.asset import Asset
+
 from pystac import (CatalogType, Collection, Extent, Asset, Summaries, Link,
                     SpatialExtent, TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
