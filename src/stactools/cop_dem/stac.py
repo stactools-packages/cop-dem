@@ -13,6 +13,7 @@ import rasterio
 from shapely.geometry import mapping, box
 from pystac import Item
 
+from stactools.core import add_raster_to_item
 from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem import constants as co
 
@@ -80,11 +81,15 @@ def create_item(href: str,
 
     item.add_asset(
         "data",
-        Asset(href=href,
-              title=title,
-              description=None,
-              media_type=MediaType.COG,
-              roles=["data"]))
+        Asset(
+            href=href,
+            title=title,
+            description=None,
+            media_type=MediaType.COG,
+            roles=["data"],
+        ))
+
+    item = add_raster_to_item(item)
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG

@@ -27,11 +27,11 @@ def create_cop_dem_command(cli):
                   help="Set PROVIDER HOST")
     def create_item_command(source: str, destination: str, validate: bool,
                             host: str):
-        """ Creates a STAC Collection
+        """ Creates a STAC Item
 
         source: Path to input item
 
-        destination: Folder to output json
+        destination: File to output json
 
         """
         item = stac.create_item(source, host=host)
