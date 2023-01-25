@@ -2,18 +2,22 @@ import os.path
 import re
 from typing import Optional
 
-from pystac import (CatalogType, Collection, Extent, Asset, Summaries, Link,
+from pystac import (CatalogType, Collection, Extent, Asset, Summaries,
                     SpatialExtent, TemporalExtent)
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
-from pystac.extensions.raster import RasterExtension
+from pystac.extensions.raster import (
+    DataType,
+    RasterBand,
+    RasterExtension,
+    Sampling,
+)
 from pystac.media_type import MediaType
 
 import rasterio
 from shapely.geometry import mapping, box
 from pystac import Item
 
-from stactools.core import add_raster_to_item
 from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem import constants as co
 
@@ -46,10 +50,8 @@ def create_item(href: str,
     if m:
         if m.group(1) == '30':
             gsd = 90
-            collection = f"cop-dem-glo-{gsd}"
         elif m.group(1) == '10':
             gsd = 30
-            collection = f"cop-dem-glo-{gsd}"
         else:
             raise ValueError("unknown resolution {}".format(m.group(1)))
         title = m.group(2)
@@ -57,13 +59,6 @@ def create_item(href: str,
         raise ValueError("unable to parse {}".format(href))
 
     item.add_links(co.COP_DEM_LINKS)
-    # Valid stac item requires collection
-    # collection requires a matching Link object
-    item.collection_id = collection
-    root_href = ''  # TODO: should this become and optional arg?
-    item.links.append(
-        Link(rel="collection",
-             target=os.path.join(root_href, f"{collection}.json")))
     item.common_metadata.platform = co.COP_DEM_PLATFORM
     item.common_metadata.gsd = gsd
 
@@ -79,17 +74,19 @@ def create_item(href: str,
     item.common_metadata.providers = providers
     item.common_metadata.license = "proprietary"
 
-    item.add_asset(
-        "data",
-        Asset(
-            href=href,
-            title=title,
-            description=None,
-            media_type=MediaType.COG,
-            roles=["data"],
-        ))
-
-    item = add_raster_to_item(item)
+    data_asset = Asset(
+        href=href,
+        title=title,
+        description=None,
+        media_type=MediaType.COG,
+        roles=["data"],
+    )
+    data_bands = RasterBand.create(sampling=Sampling.POINT,
+                                   data_type=DataType.FLOAT32,
+                                   spatial_resolution=gsd,
+                                   unit="meter")
+    RasterExtension.ext(data_asset).bands = [data_bands]
+    item.add_asset("data", data_asset)
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG
