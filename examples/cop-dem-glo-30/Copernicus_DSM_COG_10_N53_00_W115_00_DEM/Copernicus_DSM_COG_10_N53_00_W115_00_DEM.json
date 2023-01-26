@@ -1,13 +1,13 @@
 {
   "type": "Feature",
   "stac_version": "1.0.0",
-  "id": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM",
+  "id": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM",
   "properties": {
     "platform": "TanDEM-X",
-    "gsd": 90,
+    "gsd": 30,
     "providers": [
       {
-        "name": "European Space  Agency",
+        "name": "European Space Agency",
         "roles": [
           "licensor"
         ],
@@ -20,28 +20,21 @@
           "processor"
         ],
         "url": "https://registry.opendata.aws/copernicus-dem/"
-      },
-      {
-        "name": "OpenTopography",
-        "roles": [
-          "host"
-        ],
-        "url": "https://portal.opentopography.org/datasetMetadata?otCollectionID=OT.032021.4326.1"
       }
     ],
     "license": "proprietary",
     "proj:epsg": 4326,
     "proj:transform": [
-      0.00125,
+      0.00041666666666666664,
       0.0,
-      -115.000625,
+      -115.00020833333333,
       0.0,
-      -0.0008333333333333334,
-      54.000416666666666
+      -0.0002777777777777778,
+      54.00013888888889
     ],
     "proj:shape": [
-      1200,
-      800
+      3600,
+      2400
     ],
     "datetime": "2021-04-22T00:00:00Z"
   },
@@ -50,24 +43,24 @@
     "coordinates": [
       [
         [
-          -114.000625,
-          53.000416666666666
+          -114.00020833333333,
+          53.00013888888889
         ],
         [
-          -114.000625,
-          54.000416666666666
+          -114.00020833333333,
+          54.00013888888889
         ],
         [
-          -115.000625,
-          54.000416666666666
+          -115.00020833333333,
+          54.00013888888889
         ],
         [
-          -115.000625,
-          53.000416666666666
+          -115.00020833333333,
+          53.00013888888889
         ],
         [
-          -114.000625,
-          53.000416666666666
+          -114.00020833333333,
+          53.00013888888889
         ]
       ]
     ]
@@ -79,11 +72,34 @@
       "type": "application/pdf",
       "title": "Copernicus DEM User handbook",
       "description": "Also includes data usage information"
+    },
+    {
+      "rel": "license",
+      "href": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf",
+      "type": "Copernicus Data Access"
+    },
+    {
+      "rel": "root",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Copernicus DEM GLO-30"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Copernicus DEM GLO-30"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "Copernicus DEM GLO-30"
     }
   ],
   "assets": {
     "data": {
-      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM.tif",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "N53_00_W115_00",
       "roles": [
@@ -92,12 +108,13 @@
     }
   },
   "bbox": [
-    -115.000625,
-    53.000416666666666,
-    -114.000625,
-    54.000416666666666
+    -115.00020833333333,
+    53.00013888888889,
+    -114.00020833333333,
+    54.00013888888889
   ],
   "stac_extensions": [
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
-  ]
+  ],
+  "collection": "cop-dem-glo-30"
 }
