@@ -23,3 +23,15 @@ class CreateItemTest(CliTestCase):
             self.assertEqual(result.exit_code, 0)
             item = pystac.read_file(outfile)
             item.validate()
+
+    def test_create_collection(self):
+        with TemporaryDirectory() as temporary_directory:
+            outfile = os.path.join(temporary_directory, "cop-dem-glo-30.json")
+            print(outfile)
+            args = [
+                "cop-dem", "create-collection", "glo-30", temporary_directory
+            ]
+            result = self.run_command(args)
+            self.assertEqual(result.exit_code, 0)
+            collection = pystac.read_file(outfile)
+            collection.validate()

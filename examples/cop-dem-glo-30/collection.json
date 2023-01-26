@@ -1,0 +1,97 @@
+{
+  "type": "Collection",
+  "id": "cop-dem-glo-30",
+  "stac_version": "1.0.0",
+  "description": "The Copernicus DEM is a Digital Surface Model (DSM) which represents the surface of the Earth including buildings, infrastructure and vegetation. We provide two instances of Copernicus DEM named GLO-30 Public and GLO-90. GLO-90 provides worldwide coverage at 90 meters. GLO-30 Public provides limited worldwide coverage at 30 meters because a small subset of tiles covering specific countries are not yet released to the public by the Copernicus Programme. Note that in both cases ocean areas do not have tiles, there one can assume height values equal to zero. Data is provided as Cloud Optimized GeoTIFFs and comes from Copernicus DEM 2021 release.",
+  "links": [
+    {
+      "rel": "root",
+      "href": "./collection.json",
+      "type": "application/json",
+      "title": "Copernicus DEM GLO-30"
+    },
+    {
+      "rel": "handbook",
+      "href": "https://object.cloud.sdsc.edu/v1/AUTH_opentopography/www/metadata/Copernicus_metadata.pdf",
+      "type": "application/pdf",
+      "title": "Copernicus DEM User handbook",
+      "description": "Also includes data usage information"
+    },
+    {
+      "rel": "license",
+      "href": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf",
+      "type": "Copernicus Data Access"
+    },
+    {
+      "rel": "item",
+      "href": "./Copernicus_DSM_COG_10_N53_00_W115_00_DEM/Copernicus_DSM_COG_10_N53_00_W115_00_DEM.json",
+      "type": "application/json"
+    }
+  ],
+  "stac_extensions": [
+    "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json"
+  ],
+  "item_assets": {
+    "data": {
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "title": "Copernicus DEM GLO-30",
+  "extent": {
+    "spatial": {
+      "bbox": [
+        [
+          -180.0,
+          -90.0,
+          180.0,
+          90.0
+        ]
+      ]
+    },
+    "temporal": {
+      "interval": [
+        [
+          "2021-04-22T00:00:00Z",
+          "2021-04-22T00:00:00Z"
+        ]
+      ]
+    }
+  },
+  "license": "proprietary",
+  "keywords": [
+    "DEM",
+    "COPERNICUS",
+    "DSM",
+    "Elevation"
+  ],
+  "providers": [
+    {
+      "name": "European Space Agency",
+      "roles": [
+        "licensor"
+      ],
+      "url": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf"
+    },
+    {
+      "name": "Sinergise",
+      "roles": [
+        "producer",
+        "processor"
+      ],
+      "url": "https://registry.opendata.aws/copernicus-dem/"
+    }
+  ],
+  "summaries": {
+    "gsd": [
+      30
+    ],
+    "platform": [
+      "TanDEM-X"
+    ]
+  }
+}
