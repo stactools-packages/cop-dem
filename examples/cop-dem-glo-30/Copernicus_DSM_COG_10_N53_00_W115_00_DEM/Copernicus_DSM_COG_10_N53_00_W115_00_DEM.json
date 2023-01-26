@@ -102,6 +102,14 @@
       "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "N53_00_W115_00",
+      "raster:bands": [
+        {
+          "sampling": "point",
+          "data_type": "float32",
+          "spatial_resolution": 30,
+          "unit": "meter"
+        }
+      ],
       "roles": [
         "data"
       ]
