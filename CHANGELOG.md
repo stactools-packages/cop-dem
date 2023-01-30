@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2023-01-30
+
+### Added
+
+- Package description ([#10](https://github.com/stactools-packages/cop-dem/pull/10))
+
 ## [0.1.0] - 2023-01-30
 
 ### Added
@@ -18,5 +24,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - remove python 3.7 support
 
-[Unreleased]: https://github.com/stactools-packages/cop-dem/commits/main
+[Unreleased]: https://github.com/stactools-packages/cop-dem/compare/v0.1.1..main
+[0.1.1]: https://github.com/stactools-packages/cop-dem/compare/v0.1.0..v0.1.1
 [0.1.0]: https://github.com/stactools-packages/cop-dem/tags/v0.1.0
