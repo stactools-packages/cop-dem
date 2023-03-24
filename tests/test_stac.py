@@ -140,12 +140,10 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        self.assertCountEqual(item.stac_extensions, [
-            pystac.extensions.projection.SCHEMA_URI,
-            pystac.extensions.raster.SCHEMA_URI,
-        ])
+        self.assertTrue(ProjectionExtension.has_extension(item))
+        self.assertTrue(RasterExtension.has_extension(item))
 
-        item.validate()
+        item.validate() # raises STACValidationError if not
 
     def test_create_item_with_read_href_modifier(self):
         done = False
