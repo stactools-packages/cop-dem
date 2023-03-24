@@ -1,6 +1,7 @@
 import datetime
 from unittest import TestCase
 
+import pystac
 from pystac import Provider, MediaType
 from pystac.extensions.projection import ProjectionExtension
 from pystac.provider import ProviderRole
@@ -76,6 +77,11 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
+        self.assertCountEqual(item.stac_extensions, [
+            pystac.extensions.projection.SCHEMA_URI,
+            pystac.extensions.raster.SCHEMA_URI,
+        ])
+
         item.validate()
 
     def test_create_glo90_item(self):
@@ -134,6 +140,11 @@ class StacTest(TestCase):
         self.assertIsNone(data.description)
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
+
+        self.assertCountEqual(item.stac_extensions, [
+            pystac.extensions.projection.SCHEMA_URI,
+            pystac.extensions.raster.SCHEMA_URI,
+        ])
 
         item.validate()
 
