@@ -77,10 +77,8 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        self.assertCountEqual(item.stac_extensions, [
-            pystac.extensions.projection.SCHEMA_URI,
-            pystac.extensions.raster.SCHEMA_URI,
-        ])
+        ProjectionExtension.validate_has_extension(item)
+        RasterExtension.validate_has_extension(item)
 
         item.validate()
 
