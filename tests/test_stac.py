@@ -4,6 +4,7 @@ from unittest import TestCase
 import pystac
 from pystac import Provider, MediaType
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.raster import RasterExtension
 from pystac.provider import ProviderRole
 
 from stactools.cop_dem import stac
@@ -77,8 +78,8 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        ProjectionExtension.validate_has_extension(item)
-        RasterExtension.validate_has_extension(item)
+        ProjectionExtension.validate_has_extension(item, add_if_missing=False)
+        RasterExtension.validate_has_extension(item, add_if_missing=False)
 
         item.validate()
 
