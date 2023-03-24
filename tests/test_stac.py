@@ -31,7 +31,7 @@ class StacTest(TestCase):
             datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc))
 
         common_metadata = item.common_metadata
-        self.assertEqual(common_metadata.platform, "TanDEM-X")
+        self.assertEqual(common_metadata.platform, "tandem-x")
         self.assertEqual(common_metadata.gsd, 30)
         expected_providers = [
             Provider("European Space Agency",
@@ -90,7 +90,7 @@ class StacTest(TestCase):
             datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc))
 
         common_metadata = item.common_metadata
-        self.assertEqual(common_metadata.platform, "TanDEM-X")
+        self.assertEqual(common_metadata.platform, "tandem-x")
         self.assertEqual(common_metadata.gsd, 90)
         expected_providers = [
             Provider("European Space Agency",
