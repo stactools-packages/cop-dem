@@ -7,16 +7,24 @@ from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
 
 COP_DEM_PRODUCTS = ['glo-30', 'glo-90']
+
 COP_DEM_SPATIAL_EXTENT = [[-180., -90., 180., 90.]]
+
 COP_DEM_COLLECTION_START: Optional[datetime] = str_to_datetime(
     "2021-04-22T00:00:00Z")
+
 COP_DEM_COLLECTION_END: Optional[datetime] = str_to_datetime(
     "2021-04-22T00:00:00Z")
+
 COP_DEM_TEMPORAL_EXTENT = [COP_DEM_COLLECTION_START,
                            COP_DEM_COLLECTION_END]  # TODO: find the dates
+
 COP_DEM_PLATFORM = "tandem-x"
+
 COP_DEM_EPSG = 4326
+
 COP_DEM_KEYWORDS = ['DEM', 'COPERNICUS', 'DSM', 'Elevation']
+
 COP_DEM_PROVIDERS = [
     Provider("European Space Agency",
              roles=[ProviderRole.LICENSOR],
@@ -26,6 +34,7 @@ COP_DEM_PROVIDERS = [
              roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
              url="https://registry.opendata.aws/copernicus-dem/"),
 ]
+
 # Various HOST options
 COP_DEM_HOST = {
     "OT":
@@ -38,6 +47,7 @@ COP_DEM_HOST = {
              roles=[ProviderRole.HOST],
              url="https://registry.opendata.aws/copernicus-dem/")
 }
+
 COP_DEM_LINKS = [
     Link(
         "handbook",
@@ -47,7 +57,7 @@ COP_DEM_LINKS = [
         extra_fields={"description": "Also includes data usage information"}),
     Link(
         "license",
-        "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf",
+        "https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf",  # noqa: E501
         "Copernicus Data Access")
 ]
 

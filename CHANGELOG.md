@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Item `platform` value from `TanDEM-X` to `tandem-x` ([#15](https://github.com/stactools-packages/cop-dem/pull/15))
 
+## Fixed
+
+- Fixed license link to a valid URL ([#17](https://github.com/stactools-packages/cop-dem/pull/17))
+
 ## [0.1.1] - 2023-01-30
 
 ### Added
