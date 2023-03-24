@@ -78,10 +78,10 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        ProjectionExtension.validate_has_extension(item, add_if_missing=False)
-        RasterExtension.validate_has_extension(item, add_if_missing=False)
+        self.assertTrue(ProjectionExtension.has_extension(item))
+        self.assertTrue(RasterExtension.has_extension(item))
 
-        item.validate()
+        item.validate() # raises STACValidationError if not
 
     def test_create_glo90_item(self):
         item = stac.create_item(self.glo90_path)
