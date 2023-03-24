@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Fixed
 
 - Fixed license link to a valid URL ([#17](https://github.com/stactools-packages/cop-dem/pull/17))
+- Item now propertly advertises use of the Raster Extension via stac_extensions ([#18](https://github.com/stactools-packages/cop-dem/pull/18))
 
 ## [0.1.1] - 2023-01-30
 
