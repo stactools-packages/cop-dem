@@ -3,7 +3,7 @@
   "stac_version": "1.0.0",
   "id": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM",
   "properties": {
-    "platform": "TanDEM-X",
+    "platform": "tandem-x",
     "gsd": 30,
     "providers": [
       {

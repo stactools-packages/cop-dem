@@ -19,7 +19,7 @@ COP_DEM_COLLECTION_END: Optional[datetime] = str_to_datetime(
 COP_DEM_TEMPORAL_EXTENT = [COP_DEM_COLLECTION_START,
                            COP_DEM_COLLECTION_END]  # TODO: find the dates
 
-COP_DEM_PLATFORM = "TanDEM-X"
+COP_DEM_PLATFORM = "tandem-x"
 
 COP_DEM_EPSG = 4326
 
