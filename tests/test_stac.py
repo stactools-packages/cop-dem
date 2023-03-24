@@ -3,6 +3,7 @@ from unittest import TestCase
 
 from pystac import Provider, MediaType
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.raster import RasterExtension
 from pystac.provider import ProviderRole
 
 from stactools.cop_dem import stac
@@ -76,7 +77,10 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        item.validate()
+        self.assertTrue(ProjectionExtension.has_extension(item))
+        self.assertTrue(RasterExtension.has_extension(item))
+
+        item.validate()  # raises STACValidationError if not
 
     def test_create_glo90_item(self):
         item = stac.create_item(self.glo90_path)
@@ -135,7 +139,10 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        item.validate()
+        self.assertTrue(ProjectionExtension.has_extension(item))
+        self.assertTrue(RasterExtension.has_extension(item))
+
+        item.validate()  # raises STACValidationError if not
 
     def test_create_item_with_read_href_modifier(self):
         done = False

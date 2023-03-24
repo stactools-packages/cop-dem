@@ -85,8 +85,9 @@ def create_item(href: str,
                                    data_type=DataType.FLOAT32,
                                    spatial_resolution=gsd,
                                    unit="meter")
-    RasterExtension.ext(data_asset).bands = [data_bands]
+
     item.add_asset("data", data_asset)
+    RasterExtension.ext(data_asset, add_if_missing=True).bands = [data_bands]
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG
