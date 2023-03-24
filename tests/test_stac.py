@@ -1,7 +1,6 @@
 import datetime
 from unittest import TestCase
 
-import pystac
 from pystac import Provider, MediaType
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import RasterExtension
