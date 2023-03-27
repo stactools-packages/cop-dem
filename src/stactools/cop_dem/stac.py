@@ -42,10 +42,8 @@ def create_item(
         modified_href = href
     with rasterio.open(modified_href) as dataset:
         if dataset.crs.to_epsg() != co.COP_DEM_EPSG:
-            raise ValueError(
-                f"Dataset {href} is not EPSG:{co.COP_DEM_EPSG}, "
-                "which is required for Copernicus DEM data"
-            )
+            raise ValueError(f"Dataset {href} is not EPSG:{co.COP_DEM_EPSG}, "
+                             "which is required for Copernicus DEM data")
         bbox = list(dataset.bounds)
         geometry = mapping(box(*bbox))
         transform = dataset.transform
@@ -61,7 +59,7 @@ def create_item(
 
     # resolution in arc seconds (not meters!), which is and 30 for GLO-90 and 10 for GLO-30
     p = re.compile(
-        r"Copernicus_DSM_COG_(?P<res>\d{2})_(?P<northing>[NS]\d{2})_00_(?P<easting>[EW]\d{3})_00_DEM.*"
+        r"Copernicus_DSM_COG_(?P<res>\d{2})_(?P<northing>[NS]\d{2})_00_(?P<easting>[EW]\d{3})_00_DEM.*"  # noqa: E501
     )
     if m := p.match(os.path.basename(href)):
         res = m.group("res")

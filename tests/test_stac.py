@@ -61,7 +61,6 @@ class StacTest(TestCase):
             -0.0002777777777777778, 54.00013888888889
         ])
 
-
         grid = GridExtension.ext(item)
         self.assertEqual(grid.code, "CDEM-10N53W115")
 
@@ -127,7 +126,7 @@ class StacTest(TestCase):
             0.00125, 0.0, -115.000625, 0.0, -0.0008333333333333334,
             54.000416666666666
         ])
-        
+
         grid = GridExtension.ext(item)
         self.assertEqual(grid.code, "CDEM-30N53W115")
 
