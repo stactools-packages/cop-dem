@@ -45,7 +45,8 @@ def create_item(href: str,
                     properties={},
                     stac_extensions=[])
 
-    p = re.compile(r'Copernicus_DSM_COG_(\d\d)_(.*)_DEM.tif')
+    # resolution in arc seconds (not meters!), which is and 30 for GLO-90 and 10 for GLO-30
+    p = re.compile(r'Copernicus_DSM_COG_(\d\d)_.*')
     m = p.match(os.path.basename(href))
     if m:
         if m.group(1) == '30':
@@ -54,7 +55,6 @@ def create_item(href: str,
             gsd = 30
         else:
             raise ValueError("unknown resolution {}".format(m.group(1)))
-        title = m.group(2)
     else:
         raise ValueError("unable to parse {}".format(href))
 
@@ -76,7 +76,7 @@ def create_item(href: str,
 
     data_asset = Asset(
         href=href,
-        title=title,
+        title="Data",
         description=None,
         media_type=MediaType.COG,
         roles=["data"],

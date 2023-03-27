@@ -72,7 +72,7 @@ class StacTest(TestCase):
 
         data = item.assets["data"]
         self.assertEqual(data.href, self.glo30_path)
-        self.assertEqual(data.title, "N53_00_W115_00")
+        self.assertEqual(data.title, "Data")
         self.assertIsNone(data.description)
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
@@ -134,7 +134,7 @@ class StacTest(TestCase):
 
         data = item.assets["data"]
         self.assertEqual(data.href, self.glo90_path)
-        self.assertEqual(data.title, "N53_00_W115_00")
+        self.assertEqual(data.title, "Data")
         self.assertIsNone(data.description)
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])

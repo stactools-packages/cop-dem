@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/). This project attempts to match the major and minor versions of [stactools](https://github.com/stac-utils/stactools) and increments the patch number as needed.
 
+## [Unreleased] - TBD
+
+## Changed
+
+- The asset title is now always `Data`, rather than being specific to each item derived from the item ID. ([#21](https://github.com/stactools-packages/cop-dem/pull/21))
+
 ## [0.2.0] - 2023-03-24
 
 ## Changed
