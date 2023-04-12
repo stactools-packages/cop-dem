@@ -2,6 +2,7 @@ import datetime
 from unittest import TestCase
 
 from pystac import Provider, MediaType
+from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import RasterExtension
 from pystac.provider import ProviderRole
@@ -60,6 +61,9 @@ class StacTest(TestCase):
             -0.0002777777777777778, 54.00013888888889
         ])
 
+        grid = GridExtension.ext(item)
+        self.assertEqual(grid.code, "CDEM-N53W115")
+
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)
         self.assertEqual(handbook.title, "Copernicus DEM User handbook")
@@ -77,6 +81,7 @@ class StacTest(TestCase):
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
+        self.assertTrue(GridExtension.has_extension(item))
         self.assertTrue(ProjectionExtension.has_extension(item))
         self.assertTrue(RasterExtension.has_extension(item))
 
@@ -122,6 +127,9 @@ class StacTest(TestCase):
             54.000416666666666
         ])
 
+        grid = GridExtension.ext(item)
+        self.assertEqual(grid.code, "CDEM-N53W115")
+
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)
         self.assertEqual(handbook.title, "Copernicus DEM User handbook")
@@ -141,6 +149,7 @@ class StacTest(TestCase):
 
         self.assertTrue(ProjectionExtension.has_extension(item))
         self.assertTrue(RasterExtension.has_extension(item))
+        self.assertTrue(GridExtension.has_extension(item))
 
         item.validate()  # raises STACValidationError if not
 

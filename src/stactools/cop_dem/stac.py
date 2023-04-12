@@ -2,8 +2,16 @@ import os.path
 import re
 from typing import Optional
 
-from pystac import (CatalogType, Collection, Extent, Asset, Summaries,
-                    SpatialExtent, TemporalExtent)
+from pystac import (
+    CatalogType,
+    Collection,
+    Extent,
+    Asset,
+    Summaries,
+    SpatialExtent,
+    TemporalExtent,
+)
+from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
 from pystac.extensions.raster import (
@@ -22,9 +30,11 @@ from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem import constants as co
 
 
-def create_item(href: str,
-                read_href_modifier: Optional[ReadHrefModifier] = None,
-                host: Optional[str] = None) -> Item:
+def create_item(
+    href: str,
+    read_href_modifier: Optional[ReadHrefModifier] = None,
+    host: Optional[str] = None,
+) -> Item:
     """Creates a STAC Item from a single tile of Copernicus DEM data."""
     if read_href_modifier:
         modified_href = read_href_modifier(href)
@@ -38,25 +48,32 @@ def create_item(href: str,
         geometry = mapping(box(*bbox))
         transform = dataset.transform
         shape = dataset.shape
-        item = Item(id=os.path.splitext(os.path.basename(href))[0],
-                    geometry=geometry,
-                    bbox=bbox,
-                    datetime=co.COP_DEM_COLLECTION_START,
-                    properties={},
-                    stac_extensions=[])
+        item = Item(
+            id=os.path.splitext(os.path.basename(href))[0],
+            geometry=geometry,
+            bbox=bbox,
+            datetime=co.COP_DEM_COLLECTION_START,
+            properties={},
+            stac_extensions=[],
+        )
 
     # resolution in arc seconds (not meters!), which is and 30 for GLO-90 and 10 for GLO-30
-    p = re.compile(r'Copernicus_DSM_COG_(\d\d)_.*')
-    m = p.match(os.path.basename(href))
-    if m:
-        if m.group(1) == '30':
+    p = re.compile(
+        r"Copernicus_DSM_COG_(?P<res>\d{2})_(?P<northing>[NS]\d{2})_00_(?P<easting>[EW]\d{3})_00_DEM.*"  # noqa: E501
+    )
+    if m := p.match(os.path.basename(href)):
+        res = m.group("res")
+        if res == "30":
             gsd = 90
-        elif m.group(1) == '10':
+        elif res == "10":
             gsd = 30
         else:
-            raise ValueError("unknown resolution {}".format(m.group(1)))
+            raise ValueError(f"unknown resolution {res}")
+
+        northing = m.group("northing")
+        easting = m.group("easting")
     else:
-        raise ValueError("unable to parse {}".format(href))
+        raise ValueError(f"unable to parse {href}")
 
     item.add_links(co.COP_DEM_LINKS)
     item.common_metadata.platform = co.COP_DEM_PLATFORM
@@ -81,10 +98,12 @@ def create_item(href: str,
         media_type=MediaType.COG,
         roles=["data"],
     )
-    data_bands = RasterBand.create(sampling=Sampling.POINT,
-                                   data_type=DataType.FLOAT32,
-                                   spatial_resolution=gsd,
-                                   unit="meter")
+    data_bands = RasterBand.create(
+        sampling=Sampling.POINT,
+        data_type=DataType.FLOAT32,
+        spatial_resolution=gsd,
+        unit="meter",
+    )
 
     item.add_asset("data", data_asset)
     RasterExtension.ext(data_asset, add_if_missing=True).bands = [data_bands]
@@ -93,6 +112,9 @@ def create_item(href: str,
     projection.epsg = co.COP_DEM_EPSG
     projection.transform = transform[0:6]
     projection.shape = shape
+
+    grid = GridExtension.ext(item, add_if_missing=True)
+    grid.code = f"CDEM-{northing}{easting}"
 
     return item
 
@@ -142,22 +164,25 @@ def create_collection(product: str, host: Optional[str] = None) -> Collection:
     else:
         providers = co.COP_DEM_PROVIDERS
 
-    collection = Collection(id=f"cop-dem-{product.lower()}",
-                            title=f"Copernicus DEM {product.upper()}",
-                            description=co.COP_DEM_DESCRIPTION,
-                            license="proprietary",
-                            keywords=co.COP_DEM_KEYWORDS,
-                            catalog_type=CatalogType.RELATIVE_PUBLISHED,
-                            summaries=Summaries(summaries),
-                            extent=Extent(
-                                SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
-                                TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT])),
-                            providers=providers,
-                            stac_extensions=[
-                                ItemAssetsExtension.get_schema_uri(),
-                                ProjectionExtension.get_schema_uri(),
-                                RasterExtension.get_schema_uri(),
-                            ])
+    collection = Collection(
+        id=f"cop-dem-{product.lower()}",
+        title=f"Copernicus DEM {product.upper()}",
+        description=co.COP_DEM_DESCRIPTION,
+        license="proprietary",
+        keywords=co.COP_DEM_KEYWORDS,
+        catalog_type=CatalogType.RELATIVE_PUBLISHED,
+        summaries=Summaries(summaries),
+        extent=Extent(
+            SpatialExtent(co.COP_DEM_SPATIAL_EXTENT),
+            TemporalExtent([co.COP_DEM_TEMPORAL_EXTENT]),
+        ),
+        providers=providers,
+        stac_extensions=[
+            ItemAssetsExtension.get_schema_uri(),
+            ProjectionExtension.get_schema_uri(),
+            RasterExtension.get_schema_uri(),
+        ],
+    )
 
     collection.add_links(co.COP_DEM_LINKS)
 
