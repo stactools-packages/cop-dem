@@ -62,7 +62,7 @@ class StacTest(TestCase):
         ])
 
         grid = GridExtension.ext(item)
-        self.assertEqual(grid.code, "CDEM-10N53W115")
+        self.assertEqual(grid.code, "CDEM-N53W115")
 
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)
@@ -128,7 +128,7 @@ class StacTest(TestCase):
         ])
 
         grid = GridExtension.ext(item)
-        self.assertEqual(grid.code, "CDEM-30N53W115")
+        self.assertEqual(grid.code, "CDEM-N53W115")
 
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)

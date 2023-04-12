@@ -114,7 +114,7 @@ def create_item(
     projection.shape = shape
 
     grid = GridExtension.ext(item, add_if_missing=True)
-    grid.code = f"CDEM-{res}{northing}{easting}"
+    grid.code = f"CDEM-{northing}{easting}"
 
     return item
 
