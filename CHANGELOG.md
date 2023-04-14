@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Added
 
 - Added support for Grid Extension with property `grid:code` ([#24](https://github.com/stactools-packages/cop-dem/pull/24))
+- Added Projection Extension property `proj:centroid` ([#26](https://github.com/stactools-packages/cop-dem/pull/26))
 
 ## [0.3.0] - 2023-03-27
 
