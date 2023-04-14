@@ -19,6 +19,7 @@ from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import DataType, RasterBand, RasterExtension, Sampling
 from pystac.media_type import MediaType
 from shapely.geometry import box, mapping
+from shapely.geometry import shape as make_shape
 from stactools.core.io import ReadHrefModifier
 
 from stactools.cop_dem import constants as co
@@ -108,6 +109,9 @@ def create_item(
     projection.epsg = co.COP_DEM_EPSG
     projection.transform = transform[0:6]
     projection.shape = shape
+
+    centroid = make_shape(item.geometry).centroid
+    projection.centroid = {"lat": centroid.y, "lon": centroid.x}
 
     grid = GridExtension.ext(item, add_if_missing=True)
     grid.code = f"CDEM-{northing}{easting}"
