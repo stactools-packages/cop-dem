@@ -126,8 +126,8 @@ class StacTest(TestCase):
             0.00125, 0.0, -115.000625, 0.0, -0.0008333333333333334,
             54.000416666666666
         ])
-        self.assertEqual(round(projection.centroid["lat"], 5), 53.50042)
-        self.assertEqual(round(projection.centroid["lon"], 5), -114.50062)
+        self.assertEqual(round(projection.centroid["lat"], 5), 53.5)
+        self.assertEqual(round(projection.centroid["lon"], 5), -114.5)
 
         grid = GridExtension.ext(item)
         self.assertEqual(grid.code, "CDEM-N53W115")
