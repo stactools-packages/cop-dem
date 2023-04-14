@@ -21,14 +21,12 @@ from pystac.extensions.raster import (
     Sampling,
 )
 from pystac.media_type import MediaType
-from shapely.geometry import box, mapping, shape as make_shape
 from stactools.core.io import ReadHrefModifier
 
 import rasterio
-from shapely.geometry import mapping, box
+from shapely.geometry import mapping, box, shape as make_shape
 from pystac import Item
 
-from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem import constants as co
 
 
