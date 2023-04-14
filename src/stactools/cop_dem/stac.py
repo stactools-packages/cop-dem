@@ -26,8 +26,8 @@ import rasterio
 from shapely.geometry import mapping, box, shape as make_shape
 from pystac import Item
 
-from stactools.cop_dem import constants as co
 from stactools.core.io import ReadHrefModifier
+from stactools.cop_dem import constants as co
 
 
 def create_item(
