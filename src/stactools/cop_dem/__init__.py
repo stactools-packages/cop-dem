@@ -5,6 +5,7 @@ io.use_fsspec()
 
 def register_plugin(registry):
     from stactools.cop_dem import commands
+
     registry.register_subcommand(commands.create_cop_dem_command)
 
 

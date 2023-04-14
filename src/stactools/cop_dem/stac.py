@@ -2,31 +2,25 @@ import os.path
 import re
 from typing import Optional
 
+import rasterio
 from pystac import (
+    Asset,
     CatalogType,
     Collection,
     Extent,
-    Asset,
-    Summaries,
+    Item,
     SpatialExtent,
+    Summaries,
     TemporalExtent,
 )
 from pystac.extensions.grid import GridExtension
-from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.item_assets import ItemAssetsExtension
-from pystac.extensions.raster import (
-    DataType,
-    RasterBand,
-    RasterExtension,
-    Sampling,
-)
+from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.raster import DataType, RasterBand, RasterExtension, Sampling
 from pystac.media_type import MediaType
-
-import rasterio
-from shapely.geometry import mapping, box
-from pystac import Item
-
+from shapely.geometry import box, mapping
 from stactools.core.io import ReadHrefModifier
+
 from stactools.cop_dem import constants as co
 
 
@@ -42,8 +36,10 @@ def create_item(
         modified_href = href
     with rasterio.open(modified_href) as dataset:
         if dataset.crs.to_epsg() != co.COP_DEM_EPSG:
-            raise ValueError(f"Dataset {href} is not EPSG:{co.COP_DEM_EPSG}, "
-                             "which is required for Copernicus DEM data")
+            raise ValueError(
+                f"Dataset {href} is not EPSG:{co.COP_DEM_EPSG}, "
+                "which is required for Copernicus DEM data"
+            )
         bbox = list(dataset.bounds)
         geometry = mapping(box(*bbox))
         transform = dataset.transform

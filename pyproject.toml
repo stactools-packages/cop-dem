@@ -2,4 +2,5 @@
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.yapfignore]
+[tool.isort]
+profile = "black"

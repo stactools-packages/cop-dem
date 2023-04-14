@@ -9,13 +9,13 @@ from tests import test_data
 
 
 class CreateItemTest(CliTestCase):
-
     def create_subcommand_functions(self):
         return [commands.create_cop_dem_command]
 
     def test_create_item(self):
         infile = test_data.get_external_data(
-            "Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif")
+            "Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif"
+        )
         with TemporaryDirectory() as temporary_directory:
             outfile = os.path.join(temporary_directory, "item.json")
             args = ["cop-dem", "create-item", infile, outfile]
@@ -28,9 +28,7 @@ class CreateItemTest(CliTestCase):
         with TemporaryDirectory() as temporary_directory:
             outfile = os.path.join(temporary_directory, "cop-dem-glo-30.json")
             print(outfile)
-            args = [
-                "cop-dem", "create-collection", "glo-30", temporary_directory
-            ]
+            args = ["cop-dem", "create-collection", "glo-30", temporary_directory]
             result = self.run_command(args)
             self.assertEqual(result.exit_code, 0)
             collection = pystac.read_file(outfile)

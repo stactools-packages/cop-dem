@@ -1,65 +1,86 @@
 import datetime
 from unittest import TestCase
 
-from pystac import Provider, MediaType
+from pystac import MediaType, Provider
 from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
 from pystac.extensions.raster import RasterExtension
 from pystac.provider import ProviderRole
 
 from stactools.cop_dem import stac
-
 from tests import test_data
 
 
 class StacTest(TestCase):
-
     def setUp(self):
         self.glo30_path = test_data.get_external_data(
-            "Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif")
+            "Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif"
+        )
         self.glo90_path = test_data.get_external_data(
-            "Copernicus_DSM_COG_30_N53_00_W115_00_DEM.tif")
+            "Copernicus_DSM_COG_30_N53_00_W115_00_DEM.tif"
+        )
 
     def test_create_glo30_item(self):
         item = stac.create_item(self.glo30_path)
         self.assertEqual(item.id, "Copernicus_DSM_COG_10_N53_00_W115_00_DEM")
         self.assertIsNotNone(item.geometry)
-        self.assertEqual(list(item.bbox), [
-            -115.00020833333333, 53.00013888888889, -114.00020833333333,
-            54.00013888888889
-        ])
         self.assertEqual(
-            item.datetime,
-            datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc))
+            list(item.bbox),
+            [
+                -115.00020833333333,
+                53.00013888888889,
+                -114.00020833333333,
+                54.00013888888889,
+            ],
+        )
+        self.assertEqual(
+            item.datetime, datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc)
+        )
 
         common_metadata = item.common_metadata
         self.assertEqual(common_metadata.platform, "tandem-x")
         self.assertEqual(common_metadata.gsd, 30)
         expected_providers = [
-            Provider("European Space Agency",
-                     roles=[ProviderRole.LICENSOR],
-                     url=("https://spacedata.copernicus.eu/documents/20126/0/"
-                          "CSCDA_ESA_Mission-specific+Annex.pdf")),
-            Provider("Sinergise",
-                     roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
-                     url="https://registry.opendata.aws/copernicus-dem/"),
-            Provider("OpenTopography",
-                     roles=[ProviderRole.HOST],
-                     url=("https://portal.opentopography.org/"
-                          "datasetMetadata?otCollectionID=OT.032021.4326.1"))
+            Provider(
+                "European Space Agency",
+                roles=[ProviderRole.LICENSOR],
+                url=(
+                    "https://spacedata.copernicus.eu/documents/20126/0/"
+                    "CSCDA_ESA_Mission-specific+Annex.pdf"
+                ),
+            ),
+            Provider(
+                "Sinergise",
+                roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
+                url="https://registry.opendata.aws/copernicus-dem/",
+            ),
+            Provider(
+                "OpenTopography",
+                roles=[ProviderRole.HOST],
+                url=(
+                    "https://portal.opentopography.org/"
+                    "datasetMetadata?otCollectionID=OT.032021.4326.1"
+                ),
+            ),
         ]
-        for expected, actual in zip(expected_providers,
-                                    common_metadata.providers):
+        for expected, actual in zip(expected_providers, common_metadata.providers):
             self.assertDictEqual(expected.to_dict(), actual.to_dict())
         self.assertEqual(common_metadata.license, "proprietary")
 
         projection = ProjectionExtension.ext(item)
         self.assertEqual(projection.epsg, 4326)
         self.assertEqual(projection.shape, (3600, 2400))
-        self.assertEqual(list(projection.transform), [
-            0.00041666666666666664, 0.0, -115.00020833333333, 0.0,
-            -0.0002777777777777778, 54.00013888888889
-        ])
+        self.assertEqual(
+            list(projection.transform),
+            [
+                0.00041666666666666664,
+                0.0,
+                -115.00020833333333,
+                0.0,
+                -0.0002777777777777778,
+                54.00013888888889,
+            ],
+        )
 
         grid = GridExtension.ext(item)
         self.assertEqual(grid.code, "CDEM-N53W115")
@@ -71,7 +92,8 @@ class StacTest(TestCase):
         self.assertEqual(
             handbook.href,
             "https://object.cloud.sdsc.edu/v1/AUTH_opentopography/www/metadata"
-            "/Copernicus_metadata.pdf")
+            "/Copernicus_metadata.pdf",
+        )
         self.assertEqual(handbook.media_type, "application/pdf")
 
         data = item.assets["data"]
@@ -93,39 +115,56 @@ class StacTest(TestCase):
         self.assertIsNotNone(item.geometry)
         self.assertEqual(
             list(item.bbox),
-            [-115.000625, 53.000416666666666, -114.000625, 54.000416666666666])
+            [-115.000625, 53.000416666666666, -114.000625, 54.000416666666666],
+        )
         self.assertEqual(
-            item.datetime,
-            datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc))
+            item.datetime, datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc)
+        )
 
         common_metadata = item.common_metadata
         self.assertEqual(common_metadata.platform, "tandem-x")
         self.assertEqual(common_metadata.gsd, 90)
         expected_providers = [
-            Provider("European Space Agency",
-                     roles=[ProviderRole.LICENSOR],
-                     url=("https://spacedata.copernicus.eu/documents/20126/0/"
-                          "CSCDA_ESA_Mission-specific+Annex.pdf")),
-            Provider("Sinergise",
-                     roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
-                     url="https://registry.opendata.aws/copernicus-dem/"),
-            Provider("OpenTopography",
-                     roles=[ProviderRole.HOST],
-                     url=("https://portal.opentopography.org/"
-                          "datasetMetadata?otCollectionID=OT.032021.4326.1"))
+            Provider(
+                "European Space Agency",
+                roles=[ProviderRole.LICENSOR],
+                url=(
+                    "https://spacedata.copernicus.eu/documents/20126/0/"
+                    "CSCDA_ESA_Mission-specific+Annex.pdf"
+                ),
+            ),
+            Provider(
+                "Sinergise",
+                roles=[ProviderRole.PRODUCER, ProviderRole.PROCESSOR],
+                url="https://registry.opendata.aws/copernicus-dem/",
+            ),
+            Provider(
+                "OpenTopography",
+                roles=[ProviderRole.HOST],
+                url=(
+                    "https://portal.opentopography.org/"
+                    "datasetMetadata?otCollectionID=OT.032021.4326.1"
+                ),
+            ),
         ]
-        for expected, actual in zip(expected_providers,
-                                    common_metadata.providers):
+        for expected, actual in zip(expected_providers, common_metadata.providers):
             self.assertDictEqual(expected.to_dict(), actual.to_dict())
         self.assertEqual(common_metadata.license, "proprietary")
 
         projection = ProjectionExtension.ext(item)
         self.assertEqual(projection.epsg, 4326)
         self.assertEqual(projection.shape, (1200, 800))
-        self.assertEqual(list(projection.transform), [
-            0.00125, 0.0, -115.000625, 0.0, -0.0008333333333333334,
-            54.000416666666666
-        ])
+        self.assertEqual(
+            list(projection.transform),
+            [
+                0.00125,
+                0.0,
+                -115.000625,
+                0.0,
+                -0.0008333333333333334,
+                54.000416666666666,
+            ],
+        )
 
         grid = GridExtension.ext(item)
         self.assertEqual(grid.code, "CDEM-N53W115")
@@ -137,7 +176,8 @@ class StacTest(TestCase):
         self.assertEqual(
             handbook.href,
             "https://object.cloud.sdsc.edu/v1/AUTH_opentopography/www/metadata"
-            "/Copernicus_metadata.pdf")
+            "/Copernicus_metadata.pdf",
+        )
         self.assertEqual(handbook.media_type, "application/pdf")
 
         data = item.assets["data"]

@@ -20,8 +20,9 @@ def gen_collection_example(collection_name):
     collection.normalize_hrefs(str(examples))
     collection.make_all_asset_hrefs_relative()
     json_path = examples / f"cop-dem-{collection_name}"
-    collection.save(dest_href=json_path.as_posix(),
-                    catalog_type=CatalogType.SELF_CONTAINED)
+    collection.save(
+        dest_href=json_path.as_posix(), catalog_type=CatalogType.SELF_CONTAINED
+    )
 
 
 gen_collection_example("glo-30")
