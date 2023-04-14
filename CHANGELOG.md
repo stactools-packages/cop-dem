@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [0.4.1] - 2023-04-14
+
+### Changed
+
+- Round `proj:centroid` values to one decimal place, since they'll always be in 0.5 degree increments([#28](https://github.com/stactools-packages/cop-dem/pull/28))
+
 ## [0.4.0] - 2023-04-14
 
 ## Added
@@ -48,7 +54,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - remove python 3.7 support
 
-[Unreleased]: https://github.com/stactools-packages/cop-dem/compare/v0.4.0..main
+[Unreleased]: https://github.com/stactools-packages/cop-dem/compare/v0.4.1..main
+[0.4.1]: https://github.com/stactools-packages/cop-dem/compare/v0.4.0..v0.4.1
 [0.4.0]: https://github.com/stactools-packages/cop-dem/compare/v0.3.0..v0.4.0
 [0.3.0]: https://github.com/stactools-packages/cop-dem/compare/v0.2.0..v0.3.0
 [0.2.0]: https://github.com/stactools-packages/cop-dem/compare/v0.1.1..v0.2.0
