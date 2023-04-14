@@ -114,7 +114,10 @@ def create_item(
     projection.shape = shape
 
     centroid = make_shape(item.geometry).centroid
-    projection.centroid = {"lat": round(centroid.y, 1), "lon": round(centroid.x, 1)}
+    projection.centroid = {
+        "lat": round(centroid.y, 1),
+        "lon": round(centroid.x, 1)
+    }
 
     grid = GridExtension.ext(item, add_if_missing=True)
     grid.code = f"CDEM-{northing}{easting}"
