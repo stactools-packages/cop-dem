@@ -111,20 +111,20 @@ def create_item(
     # Add the additional assets
     assets_dict = {
         # Auxfiles
-        "EDM": item.id.replace("DEM", "EDM"),
-        "FLM": item.id.replace("DEM", "FLM"),
-        "WBM": item.id.replace("DEM", "WBM"),
-        "HEM": item.id.replace("DEM", "HEM"),
-        "ACM": item.id.replace("DEM.tif", "ACM.kml"),
+        "EDM": data_asset.href.replace("DEM", "EDM"),
+        "FLM": data_asset.href.replace("DEM", "FLM"),
+        "WBM": data_asset.href.replace("DEM", "WBM"),
+        "HEM": data_asset.href.replace("DEM", "HEM"),
+        "ACM": data_asset.href.replace("DEM.tif", "ACM.kml"),
         # Preview
-        "SRC": item.id.replace("DEM.tif", "SRC.kml"),
-        "DEM_QL": item.id.replace("DEM", "DEM_QL"),
-        "QL": item.id.replace("DEM.tif", "QL.kml"),
-        "DEM_ABS_QL": item.id.replace("DEM", "DEM_ABS_QL"),
-        "EDM_QL": item.id.replace("DEM", "EDM_QL"),
-        "FLM_QL": item.id.replace("DEM", "FLM_QL"),
-        "WBM_QL": item.id.replace("DEM", "WBM_QL"),
-        "HEM_QL": item.id.replace("DEM", "HEM_QL"),
+        "SRC": data_asset.href.replace("DEM.tif", "SRC.kml"),
+        "DEM_QL": data_asset.href.replace("DEM", "DEM_QL"),
+        "QL": data_asset.href.replace("DEM.tif", "QL.kml"),
+        "DEM_ABS_QL": data_asset.href.replace("DEM", "DEM_ABS_QL"),
+        "EDM_QL": data_asset.href.replace("DEM", "EDM_QL"),
+        "FLM_QL": data_asset.href.replace("DEM", "FLM_QL"),
+        "WBM_QL": data_asset.href.replace("DEM", "WBM_QL"),
+        "HEM_QL": data_asset.href.replace("DEM", "HEM_QL"),
     }
     for key, value in assets_dict.items():
         if (asset_def := co.COP_DEM_ASSETS.get(key)) is not None:

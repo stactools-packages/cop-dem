@@ -11,7 +11,7 @@
         "roles": [
           "licensor"
         ],
-        "url": "https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf"
+        "url": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf"
       },
       {
         "name": "Sinergise",
@@ -36,6 +36,11 @@
       3600,
       2400
     ],
+    "proj:centroid": {
+      "lat": 53.5,
+      "lon": -114.5
+    },
+    "grid:code": "CDEM-N53W115",
     "datetime": "2021-04-22T00:00:00Z"
   },
   "geometry": {
@@ -107,7 +112,7 @@
     "data": {
       "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_DEM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "N53_00_W115_00",
+      "title": "Data",
       "raster:bands": [
         {
           "sampling": "point",
@@ -121,7 +126,7 @@
       ]
     },
     "EDM": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_EDM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_EDM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Editing mask",
       "description": "Editing Mask",
@@ -131,7 +136,7 @@
       ]
     },
     "FLM": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_FLM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_FLM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Filling mask",
       "description": "Filling Mask",
@@ -141,7 +146,7 @@
       ]
     },
     "WBM": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_WBM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_WBM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water Body mask",
       "description": "Water Body Mask",
@@ -151,7 +156,7 @@
       ]
     },
     "HEM": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_HEM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_HEM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Height Error mask",
       "description": "Height Error Mask",
@@ -161,7 +166,7 @@
       ]
     },
     "ACM": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_ACM.kml",
       "type": "application/xml",
       "title": "Height Error mask",
       "description": "Height Error Mask",
@@ -171,7 +176,7 @@
       ]
     },
     "SRC": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_SRC.kml",
       "type": "application/xml",
       "title": "Source mask",
       "description": "Source Mask",
@@ -181,7 +186,7 @@
       ]
     },
     "DEM_QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM_QL",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_DEM_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Relative",
       "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
@@ -190,7 +195,7 @@
       ]
     },
     "QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_QL.kml",
       "type": "application/xml",
       "title": "QuickLook kml",
       "description": "kml fo QuickLook data visualization",
@@ -199,7 +204,7 @@
       ]
     },
     "DEM_ABS_QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_DEM_ABS_QL",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_DEM_ABS_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Absolute",
       "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
@@ -208,7 +213,7 @@
       ]
     },
     "EDM_QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_EDM_QL",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_EDM_QL.tif",
       "type": "image/tiff",
       "title": "Editing mask QuickLook",
       "description": "QuickLook of Editing Mask",
@@ -217,7 +222,7 @@
       ]
     },
     "FLM_QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_FLM_QL",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_FLM_QL.tif",
       "type": "image/tiff",
       "title": "Filling mask QuickLook",
       "description": "QuickLook of Filling Mask",
@@ -226,7 +231,7 @@
       ]
     },
     "WBM_QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_WBM_QL",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_WBM_QL.tif",
       "type": "image/tiff",
       "title": "Water Body mask QuickLook",
       "description": "QuickLook of Water Body Mask",
@@ -235,7 +240,7 @@
       ]
     },
     "HEM_QL": {
-      "href": "Copernicus_DSM_COG_10_N53_00_W115_00_HEM_QL",
+      "href": "../../tests/data-files/external/Copernicus_DSM_COG_10_N53_00_W115_00_HEM_QL.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Height Error mask QuickLook",
       "description": "QuickLook of Height Error Mask",
@@ -251,7 +256,9 @@
     54.00013888888889
   ],
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/grid/v1.0.0/schema.json"
   ],
   "collection": "cop-dem-glo-30"
 }
