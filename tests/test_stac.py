@@ -2,7 +2,9 @@ import datetime
 from unittest import TestCase
 
 from pystac import Provider, MediaType
+from pystac.extensions.grid import GridExtension
 from pystac.extensions.projection import ProjectionExtension
+from pystac.extensions.raster import RasterExtension
 from pystac.provider import ProviderRole
 
 from stactools.cop_dem import stac
@@ -31,7 +33,7 @@ class StacTest(TestCase):
             datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc))
 
         common_metadata = item.common_metadata
-        self.assertEqual(common_metadata.platform, "TanDEM-X")
+        self.assertEqual(common_metadata.platform, "tandem-x")
         self.assertEqual(common_metadata.gsd, 30)
         expected_providers = [
             Provider("European Space Agency",
@@ -59,6 +61,9 @@ class StacTest(TestCase):
             -0.0002777777777777778, 54.00013888888889
         ])
 
+        grid = GridExtension.ext(item)
+        self.assertEqual(grid.code, "CDEM-N53W115")
+
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)
         self.assertEqual(handbook.title, "Copernicus DEM User handbook")
@@ -71,12 +76,16 @@ class StacTest(TestCase):
 
         data = item.assets["data"]
         self.assertEqual(data.href, self.glo30_path)
-        self.assertEqual(data.title, "N53_00_W115_00")
+        self.assertEqual(data.title, "Data")
         self.assertIsNone(data.description)
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        item.validate()
+        self.assertTrue(GridExtension.has_extension(item))
+        self.assertTrue(ProjectionExtension.has_extension(item))
+        self.assertTrue(RasterExtension.has_extension(item))
+
+        item.validate()  # raises STACValidationError if not
 
     def test_create_glo90_item(self):
         item = stac.create_item(self.glo90_path)
@@ -90,7 +99,7 @@ class StacTest(TestCase):
             datetime.datetime(2021, 4, 22, tzinfo=datetime.timezone.utc))
 
         common_metadata = item.common_metadata
-        self.assertEqual(common_metadata.platform, "TanDEM-X")
+        self.assertEqual(common_metadata.platform, "tandem-x")
         self.assertEqual(common_metadata.gsd, 90)
         expected_providers = [
             Provider("European Space Agency",
@@ -117,6 +126,11 @@ class StacTest(TestCase):
             0.00125, 0.0, -115.000625, 0.0, -0.0008333333333333334,
             54.000416666666666
         ])
+        self.assertEqual(round(projection.centroid["lat"], 5), 53.5)
+        self.assertEqual(round(projection.centroid["lon"], 5), -114.5)
+
+        grid = GridExtension.ext(item)
+        self.assertEqual(grid.code, "CDEM-N53W115")
 
         handbook = item.get_single_link("handbook")
         self.assertIsNotNone(handbook)
@@ -130,12 +144,16 @@ class StacTest(TestCase):
 
         data = item.assets["data"]
         self.assertEqual(data.href, self.glo90_path)
-        self.assertEqual(data.title, "N53_00_W115_00")
+        self.assertEqual(data.title, "Data")
         self.assertIsNone(data.description)
         self.assertEqual(data.media_type, MediaType.COG)
         self.assertEqual(data.roles, ["data"])
 
-        item.validate()
+        self.assertTrue(ProjectionExtension.has_extension(item))
+        self.assertTrue(RasterExtension.has_extension(item))
+        self.assertTrue(GridExtension.has_extension(item))
+
+        item.validate()  # raises STACValidationError if not
 
     def test_create_item_with_read_href_modifier(self):
         done = False

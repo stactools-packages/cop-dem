@@ -25,7 +25,7 @@
     },
     {
       "rel": "license",
-      "href": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf",
+      "href": "https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf",
       "type": "Copernicus Data Access"
     },
     {
@@ -191,7 +191,7 @@
       "roles": [
         "licensor"
       ],
-      "url": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf"
+      "url": "https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf"
     },
     {
       "name": "Sinergise",
@@ -207,7 +207,7 @@
       90
     ],
     "platform": [
-      "TanDEM-X"
+      "tandem-x"
     ]
   }
 }
