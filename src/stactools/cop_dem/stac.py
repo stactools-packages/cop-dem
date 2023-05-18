@@ -110,31 +110,14 @@ def create_item(
     item.add_asset("data", data_asset)
     RasterExtension.ext(data_asset, add_if_missing=True).bands = [data_bands]
 
-    # Add the additional assets
-    # assets_dict = {
-    #     # Auxfiles
-    #     "EDM": data_asset.href.replace("DEM", "EDM"),
-    #     "FLM": data_asset.href.replace("DEM", "FLM"),
-    #     "WBM": data_asset.href.replace("DEM", "WBM"),
-    #     "HEM": data_asset.href.replace("DEM", "HEM"),
-    #     "ACM": data_asset.href.replace("DEM.tif", "ACM.kml"),
-    #     # Preview
-    #     "SRC": data_asset.href.replace("DEM.tif", "SRC.kml"),
-    #     "DEM_QL": data_asset.href.replace("DEM", "DEM_QL"),
-    #     "QL": data_asset.href.replace("DEM.tif", "QL.kml"),
-    #     "DEM_ABS_QL": data_asset.href.replace("DEM", "DEM_ABS_QL"),
-    #     "EDM_QL": data_asset.href.replace("DEM", "EDM_QL"),
-    #     "FLM_QL": data_asset.href.replace("DEM", "FLM_QL"),
-    #     "WBM_QL": data_asset.href.replace("DEM", "WBM_QL"),
-    #     "HEM_QL": data_asset.href.replace("DEM", "HEM_QL"),
-    # }
-
+    # Make a list of /AUXFILES assets
     assets_auxfiles = ["EDM.tif", "FLM.tif", "WBM.tif", "HEM.tif", "ACM.kml"]
     assets_auxfiles_dict = dict([
         change_asset_directory(href, asset, "AUXFILES")
         for asset in assets_auxfiles
     ])
 
+    # Make a list of /PREVIEW assets
     assets_previews = [
         "SRC.kml", "DEM_QL.tif", "QL.kml", "DEM_ABS_QL.tif", "EDM_QL.tif",
         "FLM_QL.tif", "WBM_QL.tif", "HEM_QL.tif"
