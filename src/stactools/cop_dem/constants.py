@@ -46,16 +46,116 @@ COP_DEM_LINKS = [
         "Copernicus DEM User handbook",
         extra_fields={"description": "Also includes data usage information"}),
     Link(
+        "product handbook",
+        "https://spacedata.copernicus.eu/documents/20123/122407/GEO1988-CopernicusDEM-SPE-002_ProductHandbook_I5.0+%281%29.pdf/706ee17d-2cce-f1fa-a73e-1686d28f09dd?t=1679657087883"  # noqa: E501
+        "application/pdf",
+        "Compernicus DEM Product Handbook (Nov 2022)",
+        extra_fields={"description": "Also includes data usage information"}),
+    Link(
         "license",
         "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf",
         "Copernicus Data Access")
 ]
 
 COP_DEM_ASSETS = {
-    "data": AssetDefinition({
+    "data":
+    AssetDefinition({
         "type": MediaType.COG,
         "roles": ["data"],
-    })
+    }),
+    "EDM":
+    AssetDefinition({
+        "title": "Editing mask",
+        "type": MediaType.COG,
+        "description": "Editing Mask",
+        "role": ["data", "data-mask"],
+    }),
+    "FLM":
+    AssetDefinition({
+        "title": "Filling mask",
+        "type": MediaType.COG,
+        "description": "Filling Mask",
+        "role": ["data", "data-mask"],
+    }),
+    "WBM":
+    AssetDefinition({
+        "title": "Water Body mask",
+        "type": MediaType.COG,
+        "description": "Water Body Mask",
+        "role": ["data", "data-mask"],
+    }),
+    "HEM":
+    AssetDefinition({
+        "title": "Height Error mask",
+        "type": MediaType.COG,
+        "description": "Height Error Mask",
+        "role": ["data", "data-mask"],
+    }),
+    "ACM":
+    AssetDefinition({
+        "title": "Height Error mask",
+        "type": MediaType.XML,  # TODO change to KML
+        "description": "Height Error Mask",
+        "role": ["data", "data-mask"],
+    }),
+    "SRC":
+    AssetDefinition({
+        "title": "Source mask",
+        "type": MediaType.XML,  # TODO change to KML
+        "description": "Source Mask",
+        "role": ["data", "data-mask"],
+    }),
+    "DEM_QL":
+    AssetDefinition({
+        "title": "DEM QuickLook Relative",
+        "type": MediaType.TIFF,
+        "description":
+        "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
+        "role": ["overview"],
+    }),
+    "QL":
+    AssetDefinition({
+        "title": "QuickLook kml",
+        "type": MediaType.XML,  # TODO change to KML
+        "description": "kml fo QuickLook data visualization",
+        "role": ["overview"],
+    }),
+    "DEM_ABS_QL":
+    AssetDefinition({
+        "title": "DEM QuickLook Absolute",
+        "type": MediaType.TIFF,
+        "description":
+        "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
+        "role": ["overview"],
+    }),
+    "EDM_QL":
+    AssetDefinition({
+        "title": "Editing mask QuickLook",
+        "type": MediaType.TIFF,
+        "description": "QuickLook of Editing Mask",
+        "role": ["overview"],
+    }),
+    "FLM_QL":
+    AssetDefinition({
+        "title": "Filling mask QuickLook",
+        "type": MediaType.TIFF,
+        "description": "QuickLook of Filling Mask",
+        "role": ["overview"],
+    }),
+    "WBM_QL":
+    AssetDefinition({
+        "title": "Water Body mask QuickLook",
+        "type": MediaType.TIFF,
+        "description": "QuickLook of Water Body Mask",
+        "role": ["overview"],
+    }),
+    "HEM_QL":
+    AssetDefinition({
+        "title": "Height Error mask QuickLook",
+        "type": MediaType.COG,
+        "description": "QuickLook of Height Error Mask",
+        "role": ["overview"],
+    }),
 }
 
 COP_DEM_DESCRIPTION = '''The Copernicus DEM is a Digital Surface Model (DSM) which represents the surface of the Earth including buildings, infrastructure and vegetation. We provide two instances of Copernicus DEM named GLO-30 Public and GLO-90. GLO-90 provides worldwide coverage at 90 meters. GLO-30 Public provides limited worldwide coverage at 30 meters because a small subset of tiles covering specific countries are not yet released to the public by the Copernicus Programme. Note that in both cases ocean areas do not have tiles, there one can assume height values equal to zero. Data is provided as Cloud Optimized GeoTIFFs and comes from Copernicus DEM 2021 release.'''  # noqa: E501

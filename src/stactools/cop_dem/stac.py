@@ -88,6 +88,30 @@ def create_item(href: str,
     RasterExtension.ext(data_asset).bands = [data_bands]
     item.add_asset("data", data_asset)
 
+    # Add the additional assets
+    assets_dict = {
+        # Auxfiles
+        "EDM": item.id.replace("DEM", "EDM"),
+        "FLM": item.id.replace("DEM", "FLM"),
+        "WBM": item.id.replace("DEM", "WBM"),
+        "HEM": item.id.replace("DEM", "HEM"),
+        "ACM": item.id.replace("DEM.tif", "ACM.kml"),
+        # Preview
+        "SRC": item.id.replace("DEM.tif", "SRC.kml"),
+        "DEM_QL": item.id.replace("DEM", "DEM_QL"),
+        "QL": item.id.replace("DEM.tif", "QL.kml"),
+        "DEM_ABS_QL": item.id.replace("DEM", "DEM_ABS_QL"),
+        "EDM_QL": item.id.replace("DEM", "EDM_QL"),
+        "FLM_QL": item.id.replace("DEM", "FLM_QL"),
+        "WBM_QL": item.id.replace("DEM", "WBM_QL"),
+        "HEM_QL": item.id.replace("DEM", "HEM_QL"),
+    }
+    for key, value in assets_dict.items():
+        if (asset_def := co.COP_DEM_ASSETS.get(key)) is not None:
+            asset = asset_def.create_asset((value))
+
+        item.add_asset(key, asset)
+
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG
     projection.transform = transform[0:6]

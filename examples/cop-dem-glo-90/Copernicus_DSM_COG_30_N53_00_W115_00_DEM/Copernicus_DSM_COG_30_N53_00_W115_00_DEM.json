@@ -74,6 +74,12 @@
       "description": "Also includes data usage information"
     },
     {
+      "rel": "product handbook",
+      "href": "https://spacedata.copernicus.eu/documents/20123/122407/GEO1988-CopernicusDEM-SPE-002_ProductHandbook_I5.0+%281%29.pdf/706ee17d-2cce-f1fa-a73e-1686d28f09dd?t=1679657087883application/pdf",
+      "type": "Compernicus DEM Product Handbook (Nov 2022)",
+      "description": "Also includes data usage information"
+    },
+    {
       "rel": "license",
       "href": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf",
       "type": "Copernicus Data Access"
@@ -112,6 +118,129 @@
       ],
       "roles": [
         "data"
+      ]
+    },
+    "EDM": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_EDM",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Editing mask",
+      "description": "Editing Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ]
+    },
+    "FLM": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_FLM",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Filling mask",
+      "description": "Filling Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ]
+    },
+    "WBM": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_WBM",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Water Body mask",
+      "description": "Water Body Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ]
+    },
+    "HEM": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_HEM",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Height Error mask",
+      "description": "Height Error Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ]
+    },
+    "ACM": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM",
+      "type": "application/xml",
+      "title": "Height Error mask",
+      "description": "Height Error Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ]
+    },
+    "SRC": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM",
+      "type": "application/xml",
+      "title": "Source mask",
+      "description": "Source Mask",
+      "role": [
+        "data",
+        "data-mask"
+      ]
+    },
+    "DEM_QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM_QL",
+      "type": "image/tiff",
+      "title": "DEM QuickLook Relative",
+      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
+      "role": [
+        "overview"
+      ]
+    },
+    "QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM",
+      "type": "application/xml",
+      "title": "QuickLook kml",
+      "description": "kml fo QuickLook data visualization",
+      "role": [
+        "overview"
+      ]
+    },
+    "DEM_ABS_QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_DEM_ABS_QL",
+      "type": "image/tiff",
+      "title": "DEM QuickLook Absolute",
+      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
+      "role": [
+        "overview"
+      ]
+    },
+    "EDM_QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_EDM_QL",
+      "type": "image/tiff",
+      "title": "Editing mask QuickLook",
+      "description": "QuickLook of Editing Mask",
+      "role": [
+        "overview"
+      ]
+    },
+    "FLM_QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_FLM_QL",
+      "type": "image/tiff",
+      "title": "Filling mask QuickLook",
+      "description": "QuickLook of Filling Mask",
+      "role": [
+        "overview"
+      ]
+    },
+    "WBM_QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_WBM_QL",
+      "type": "image/tiff",
+      "title": "Water Body mask QuickLook",
+      "description": "QuickLook of Water Body Mask",
+      "role": [
+        "overview"
+      ]
+    },
+    "HEM_QL": {
+      "href": "Copernicus_DSM_COG_30_N53_00_W115_00_HEM_QL",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "title": "Height Error mask QuickLook",
+      "description": "QuickLook of Height Error Mask",
+      "role": [
+        "overview"
       ]
     }
   },
