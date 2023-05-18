@@ -150,7 +150,7 @@
     },
     "HEM_QL": {
       "title": "Height Error mask QuickLook",
-      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "type": "image/tiff",
       "description": "QuickLook of Height Error Mask",
       "role": [
         "overview"

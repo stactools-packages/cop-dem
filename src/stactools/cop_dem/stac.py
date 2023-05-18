@@ -29,6 +29,8 @@ from pystac import Item
 from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem import constants as co
 
+from stactools.cop_dem.assets_utils import change_asset_directory
+
 
 def create_item(
     href: str,
@@ -109,23 +111,42 @@ def create_item(
     RasterExtension.ext(data_asset, add_if_missing=True).bands = [data_bands]
 
     # Add the additional assets
-    assets_dict = {
-        # Auxfiles
-        "EDM": data_asset.href.replace("DEM", "EDM"),
-        "FLM": data_asset.href.replace("DEM", "FLM"),
-        "WBM": data_asset.href.replace("DEM", "WBM"),
-        "HEM": data_asset.href.replace("DEM", "HEM"),
-        "ACM": data_asset.href.replace("DEM.tif", "ACM.kml"),
-        # Preview
-        "SRC": data_asset.href.replace("DEM.tif", "SRC.kml"),
-        "DEM_QL": data_asset.href.replace("DEM", "DEM_QL"),
-        "QL": data_asset.href.replace("DEM.tif", "QL.kml"),
-        "DEM_ABS_QL": data_asset.href.replace("DEM", "DEM_ABS_QL"),
-        "EDM_QL": data_asset.href.replace("DEM", "EDM_QL"),
-        "FLM_QL": data_asset.href.replace("DEM", "FLM_QL"),
-        "WBM_QL": data_asset.href.replace("DEM", "WBM_QL"),
-        "HEM_QL": data_asset.href.replace("DEM", "HEM_QL"),
-    }
+    # assets_dict = {
+    #     # Auxfiles
+    #     "EDM": data_asset.href.replace("DEM", "EDM"),
+    #     "FLM": data_asset.href.replace("DEM", "FLM"),
+    #     "WBM": data_asset.href.replace("DEM", "WBM"),
+    #     "HEM": data_asset.href.replace("DEM", "HEM"),
+    #     "ACM": data_asset.href.replace("DEM.tif", "ACM.kml"),
+    #     # Preview
+    #     "SRC": data_asset.href.replace("DEM.tif", "SRC.kml"),
+    #     "DEM_QL": data_asset.href.replace("DEM", "DEM_QL"),
+    #     "QL": data_asset.href.replace("DEM.tif", "QL.kml"),
+    #     "DEM_ABS_QL": data_asset.href.replace("DEM", "DEM_ABS_QL"),
+    #     "EDM_QL": data_asset.href.replace("DEM", "EDM_QL"),
+    #     "FLM_QL": data_asset.href.replace("DEM", "FLM_QL"),
+    #     "WBM_QL": data_asset.href.replace("DEM", "WBM_QL"),
+    #     "HEM_QL": data_asset.href.replace("DEM", "HEM_QL"),
+    # }
+
+    assets_auxfiles = ["EDM.tif", "FLM.tif", "WBM.tif", "HEM.tif", "ACM.kml"]
+    assets_auxfiles_dict = dict([
+        change_asset_directory(href, asset, "AUXFILES")
+        for asset in assets_auxfiles
+    ])
+
+    assets_previews = [
+        "SRC.kml", "DEM_QL.tif", "QL.kml", "DEM_ABS_QL.tif", "EDM_QL.tif",
+        "FLM_QL.tif", "WBM_QL.tif", "HEM_QL.tif"
+    ]
+    assets_dict = dict([
+        change_asset_directory(href, asset, "PREVIEW")
+        for asset in assets_previews
+    ])
+
+    # Add the AUX and Preview Assets together
+    assets_dict.update(assets_auxfiles_dict)
+
     for key, value in assets_dict.items():
         if (asset_def := co.COP_DEM_ASSETS.get(key)) is not None:
             asset = asset_def.create_asset((value))

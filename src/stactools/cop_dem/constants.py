@@ -162,7 +162,7 @@ COP_DEM_ASSETS = {
     "HEM_QL":
     AssetDefinition({
         "title": "Height Error mask QuickLook",
-        "type": MediaType.COG,
+        "type": MediaType.TIFF,
         "description": "QuickLook of Height Error Mask",
         "role": ["overview"],
     }),
