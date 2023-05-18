@@ -126,7 +126,7 @@
       ]
     },
     "SRC": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_SRC.kml",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_SRC.kml",
       "type": "application/xml",
       "title": "Source mask",
       "description": "Source Mask",
@@ -136,7 +136,7 @@
       ]
     },
     "DEM_QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_QL.tif",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Relative",
       "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
@@ -145,7 +145,7 @@
       ]
     },
     "QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_QL.kml",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_QL.kml",
       "type": "application/xml",
       "title": "QuickLook kml",
       "description": "kml fo QuickLook data visualization",
@@ -154,7 +154,7 @@
       ]
     },
     "DEM_ABS_QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_ABS_QL.tif",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_ABS_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Absolute",
       "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
@@ -163,7 +163,7 @@
       ]
     },
     "EDM_QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_EDM_QL.tif",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_EDM_QL.tif",
       "type": "image/tiff",
       "title": "Editing mask QuickLook",
       "description": "QuickLook of Editing Mask",
@@ -172,7 +172,7 @@
       ]
     },
     "FLM_QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_FLM_QL.tif",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_FLM_QL.tif",
       "type": "image/tiff",
       "title": "Filling mask QuickLook",
       "description": "QuickLook of Filling Mask",
@@ -181,7 +181,7 @@
       ]
     },
     "WBM_QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_WBM_QL.tif",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_WBM_QL.tif",
       "type": "image/tiff",
       "title": "Water Body mask QuickLook",
       "description": "QuickLook of Water Body Mask",
@@ -190,7 +190,7 @@
       ]
     },
     "HEM_QL": {
-      "href": "../../tests/data-files/external/PREVIEWS/Copernicus_DSM_COG_30_N53_00_W115_00_HEM_QL.tif",
+      "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_HEM_QL.tif",
       "type": "image/tiff",
       "title": "Height Error mask QuickLook",
       "description": "QuickLook of Height Error Mask",
