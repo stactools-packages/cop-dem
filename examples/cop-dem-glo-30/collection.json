@@ -84,7 +84,7 @@
     },
     "ACM": {
       "title": "Height Error mask",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "description": "Height Error Mask",
       "role": [
         "data",
@@ -93,7 +93,7 @@
     },
     "SRC": {
       "title": "Source mask",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "description": "Source Mask",
       "role": [
         "data",
@@ -110,7 +110,7 @@
     },
     "QL": {
       "title": "QuickLook kml",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "description": "kml fo QuickLook data visualization",
       "role": [
         "overview"

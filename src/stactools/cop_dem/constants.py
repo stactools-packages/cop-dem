@@ -104,14 +104,14 @@ COP_DEM_ASSETS = {
     "ACM":
     AssetDefinition({
         "title": "Height Error mask",
-        "type": MediaType.XML,  # TODO change to KML
+        "type": "application/vnd.google-earth.kml+xml",
         "description": "Height Error Mask",
         "role": ["data", "data-mask"],
     }),
     "SRC":
     AssetDefinition({
         "title": "Source mask",
-        "type": MediaType.XML,  # TODO change to KML
+        "type": "application/vnd.google-earth.kml+xml",
         "description": "Source Mask",
         "role": ["data", "data-mask"],
     }),
@@ -126,7 +126,7 @@ COP_DEM_ASSETS = {
     "QL":
     AssetDefinition({
         "title": "QuickLook kml",
-        "type": MediaType.XML,  # TODO change to KML
+        "type": "application/vnd.google-earth.kml+xml",
         "description": "kml fo QuickLook data visualization",
         "role": ["overview"],
     }),

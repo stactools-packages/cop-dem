@@ -127,7 +127,7 @@
     },
     "SRC": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_10_N53_00_W115_00_SRC.kml",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "title": "Source mask",
       "description": "Source Mask",
       "role": [
@@ -146,7 +146,7 @@
     },
     "QL": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_10_N53_00_W115_00_QL.kml",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "title": "QuickLook kml",
       "description": "kml fo QuickLook data visualization",
       "role": [
@@ -240,7 +240,7 @@
     },
     "ACM": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_10_N53_00_W115_00_ACM.kml",
-      "type": "application/xml",
+      "type": "application/vnd.google-earth.kml+xml",
       "title": "Height Error mask",
       "description": "Height Error Mask",
       "role": [
