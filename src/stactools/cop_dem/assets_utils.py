@@ -2,10 +2,11 @@
 Creates the Item Assets section
 """
 import os.path
+from typing import Tuple
 
 
 def change_asset_directory(href: str, asset_name: str,
-                           subdirectory: str) -> tuple[str, str]:
+                           subdirectory: str) -> Tuple[str, str]:
     """
     Apply a subdirectory prefix
     """
