@@ -125,7 +125,7 @@
         "data"
       ]
     },
-    "SRC": {
+    "src": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_SRC.kml",
       "type": "application/vnd.google-earth.kml+xml",
       "title": "Source mask",
@@ -135,7 +135,7 @@
         "data-mask"
       ]
     },
-    "DEM_QL": {
+    "dem_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Relative",
@@ -144,7 +144,7 @@
         "overview"
       ]
     },
-    "QL": {
+    "ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_QL.kml",
       "type": "application/vnd.google-earth.kml+xml",
       "title": "QuickLook kml",
@@ -153,7 +153,7 @@
         "overview"
       ]
     },
-    "DEM_ABS_QL": {
+    "dem_abs_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_ABS_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Absolute",
@@ -162,7 +162,7 @@
         "overview"
       ]
     },
-    "EDM_QL": {
+    "edm_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_EDM_QL.tif",
       "type": "image/tiff",
       "title": "Editing mask QuickLook",
@@ -171,7 +171,7 @@
         "overview"
       ]
     },
-    "FLM_QL": {
+    "flm_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_FLM_QL.tif",
       "type": "image/tiff",
       "title": "Filling mask QuickLook",
@@ -180,7 +180,7 @@
         "overview"
       ]
     },
-    "WBM_QL": {
+    "wbm_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_WBM_QL.tif",
       "type": "image/tiff",
       "title": "Water Body mask QuickLook",
@@ -189,7 +189,7 @@
         "overview"
       ]
     },
-    "HEM_QL": {
+    "hem_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_HEM_QL.tif",
       "type": "image/tiff",
       "title": "Height Error mask QuickLook",
@@ -198,7 +198,7 @@
         "overview"
       ]
     },
-    "EDM": {
+    "edm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_EDM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Editing mask",
@@ -208,7 +208,7 @@
         "data-mask"
       ]
     },
-    "FLM": {
+    "flm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_FLM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Filling mask",
@@ -218,7 +218,7 @@
         "data-mask"
       ]
     },
-    "WBM": {
+    "wbm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_WBM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Water Body mask",
@@ -228,7 +228,7 @@
         "data-mask"
       ]
     },
-    "HEM": {
+    "hem": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_HEM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "title": "Height Error mask",
@@ -238,7 +238,7 @@
         "data-mask"
       ]
     },
-    "ACM": {
+    "acm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_ACM.kml",
       "type": "application/vnd.google-earth.kml+xml",
       "title": "Height Error mask",

@@ -46,7 +46,7 @@
         "data"
       ]
     },
-    "EDM": {
+    "edm": {
       "title": "Editing mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Editing Mask",
@@ -55,7 +55,7 @@
         "data-mask"
       ]
     },
-    "FLM": {
+    "flm": {
       "title": "Filling mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Filling Mask",
@@ -64,7 +64,7 @@
         "data-mask"
       ]
     },
-    "WBM": {
+    "wbm": {
       "title": "Water Body mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Water Body Mask",
@@ -73,7 +73,7 @@
         "data-mask"
       ]
     },
-    "HEM": {
+    "hem": {
       "title": "Height Error mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Height Error Mask",
@@ -82,7 +82,7 @@
         "data-mask"
       ]
     },
-    "ACM": {
+    "acm": {
       "title": "Height Error mask",
       "type": "application/vnd.google-earth.kml+xml",
       "description": "Height Error Mask",
@@ -91,7 +91,7 @@
         "data-mask"
       ]
     },
-    "SRC": {
+    "src": {
       "title": "Source mask",
       "type": "application/vnd.google-earth.kml+xml",
       "description": "Source Mask",
@@ -100,7 +100,7 @@
         "data-mask"
       ]
     },
-    "DEM_QL": {
+    "dem_ql": {
       "title": "DEM QuickLook Relative",
       "type": "image/tiff",
       "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
@@ -108,7 +108,7 @@
         "overview"
       ]
     },
-    "QL": {
+    "ql": {
       "title": "QuickLook kml",
       "type": "application/vnd.google-earth.kml+xml",
       "description": "kml fo QuickLook data visualization",
@@ -116,7 +116,7 @@
         "overview"
       ]
     },
-    "DEM_ABS_QL": {
+    "dem_abs_ql": {
       "title": "DEM QuickLook Absolute",
       "type": "image/tiff",
       "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
@@ -124,7 +124,7 @@
         "overview"
       ]
     },
-    "EDM_QL": {
+    "edm_ql": {
       "title": "Editing mask QuickLook",
       "type": "image/tiff",
       "description": "QuickLook of Editing Mask",
@@ -132,7 +132,7 @@
         "overview"
       ]
     },
-    "FLM_QL": {
+    "flm_ql": {
       "title": "Filling mask QuickLook",
       "type": "image/tiff",
       "description": "QuickLook of Filling Mask",
@@ -140,7 +140,7 @@
         "overview"
       ]
     },
-    "WBM_QL": {
+    "wbm_ql": {
       "title": "Water Body mask QuickLook",
       "type": "image/tiff",
       "description": "QuickLook of Water Body Mask",
@@ -148,7 +148,7 @@
         "overview"
       ]
     },
-    "HEM_QL": {
+    "hem_ql": {
       "title": "Height Error mask QuickLook",
       "type": "image/tiff",
       "description": "QuickLook of Height Error Mask",

@@ -73,49 +73,49 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "roles": ["data"],
     }),
-    "EDM":
+    "edm":
     AssetDefinition({
         "title": "Editing mask",
         "type": MediaType.COG,
         "description": "Editing Mask",
         "role": ["data", "data-mask"],
     }),
-    "FLM":
+    "flm":
     AssetDefinition({
         "title": "Filling mask",
         "type": MediaType.COG,
         "description": "Filling Mask",
         "role": ["data", "data-mask"],
     }),
-    "WBM":
+    "wbm":
     AssetDefinition({
         "title": "Water Body mask",
         "type": MediaType.COG,
         "description": "Water Body Mask",
         "role": ["data", "data-mask"],
     }),
-    "HEM":
+    "hem":
     AssetDefinition({
         "title": "Height Error mask",
         "type": MediaType.COG,
         "description": "Height Error Mask",
         "role": ["data", "data-mask"],
     }),
-    "ACM":
+    "acm":
     AssetDefinition({
         "title": "Height Error mask",
         "type": "application/vnd.google-earth.kml+xml",
         "description": "Height Error Mask",
         "role": ["data", "data-mask"],
     }),
-    "SRC":
+    "src":
     AssetDefinition({
         "title": "Source mask",
         "type": "application/vnd.google-earth.kml+xml",
         "description": "Source Mask",
         "role": ["data", "data-mask"],
     }),
-    "DEM_QL":
+    "dem_ql":
     AssetDefinition({
         "title": "DEM QuickLook Relative",
         "type": MediaType.TIFF,
@@ -123,14 +123,14 @@ COP_DEM_ASSETS = {
         "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
         "role": ["overview"],
     }),
-    "QL":
+    "ql":
     AssetDefinition({
         "title": "QuickLook kml",
         "type": "application/vnd.google-earth.kml+xml",
         "description": "kml fo QuickLook data visualization",
         "role": ["overview"],
     }),
-    "DEM_ABS_QL":
+    "dem_abs_ql":
     AssetDefinition({
         "title": "DEM QuickLook Absolute",
         "type": MediaType.TIFF,
@@ -138,28 +138,28 @@ COP_DEM_ASSETS = {
         "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
         "role": ["overview"],
     }),
-    "EDM_QL":
+    "edm_ql":
     AssetDefinition({
         "title": "Editing mask QuickLook",
         "type": MediaType.TIFF,
         "description": "QuickLook of Editing Mask",
         "role": ["overview"],
     }),
-    "FLM_QL":
+    "flm_ql":
     AssetDefinition({
         "title": "Filling mask QuickLook",
         "type": MediaType.TIFF,
         "description": "QuickLook of Filling Mask",
         "role": ["overview"],
     }),
-    "WBM_QL":
+    "wbm_ql":
     AssetDefinition({
         "title": "Water Body mask QuickLook",
         "type": MediaType.TIFF,
         "description": "QuickLook of Water Body Mask",
         "role": ["overview"],
     }),
-    "HEM_QL":
+    "hem_ql":
     AssetDefinition({
         "title": "Height Error mask QuickLook",
         "type": MediaType.TIFF,
