@@ -157,7 +157,7 @@
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_10_N53_00_W115_00_DEM_ABS_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Absolute",
-      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (absolute)",
       "role": [
         "overview"
       ]
