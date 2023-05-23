@@ -78,42 +78,42 @@ COP_DEM_ASSETS = {
         "title": "Editing mask",
         "type": MediaType.COG,
         "description": "Editing Mask",
-        "role": ["data", "data-mask"],
+        "role": ["mask"],
     }),
     "flm":
     AssetDefinition({
         "title": "Filling mask",
         "type": MediaType.COG,
         "description": "Filling Mask",
-        "role": ["data", "data-mask"],
+        "role": ["mask"],
     }),
     "wbm":
     AssetDefinition({
         "title": "Water Body mask",
         "type": MediaType.COG,
         "description": "Water Body Mask",
-        "role": ["data", "data-mask"],
+        "role": ["mask"],
     }),
     "hem":
     AssetDefinition({
         "title": "Height Error mask",
         "type": MediaType.COG,
         "description": "Height Error Mask",
-        "role": ["data", "data-mask"],
+        "role": ["mask"],
     }),
     "acm":
     AssetDefinition({
         "title": "Height Error mask",
         "type": "application/vnd.google-earth.kml+xml",
         "description": "Height Error Mask",
-        "role": ["data", "data-mask"],
+        "role": ["mask"],
     }),
     "src":
     AssetDefinition({
         "title": "Source mask",
         "type": "application/vnd.google-earth.kml+xml",
         "description": "Source Mask",
-        "role": ["data", "data-mask"],
+        "role": ["mask"],
     }),
     "dem_ql":
     AssetDefinition({
