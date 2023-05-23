@@ -148,7 +148,7 @@
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_10_N53_00_W115_00_QL.kml",
       "type": "application/vnd.google-earth.kml+xml",
       "title": "QuickLook kml",
-      "description": "kml fo QuickLook data visualization",
+      "description": "kml of QuickLook data visualization",
       "role": [
         "overview"
       ]
