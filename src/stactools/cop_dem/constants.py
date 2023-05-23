@@ -120,14 +120,14 @@ COP_DEM_ASSETS = {
         "title": "DEM QuickLook Relative",
         "type": MediaType.TIFF,
         "description":
-        "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
+        "QuickLook of Digital Elevation Model with shaded relief representation (relative)",
         "role": ["overview"],
     }),
     "ql":
     AssetDefinition({
-        "title": "QuickLook kml",
+        "title": "QuickLookKML",
         "type": "application/vnd.google-earth.kml+xml",
-        "description": "kml fo QuickLook data visualization",
+        "description": "KML of QuickLook data visualization",
         "role": ["overview"],
     }),
     "dem_abs_ql":
@@ -135,7 +135,7 @@ COP_DEM_ASSETS = {
         "title": "DEM QuickLook Absolute",
         "type": MediaType.TIFF,
         "description":
-        "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
+        "QuickLook of Digital Elevation Model with shaded relief representation (absolute)",
         "role": ["overview"],
     }),
     "edm_ql":
