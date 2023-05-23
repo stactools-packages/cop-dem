@@ -111,7 +111,7 @@
     "ql": {
       "title": "QuickLook kml",
       "type": "application/vnd.google-earth.kml+xml",
-      "description": "kml fo QuickLook data visualization",
+      "description": "kml of QuickLook data visualization",
       "role": [
         "overview"
       ]
