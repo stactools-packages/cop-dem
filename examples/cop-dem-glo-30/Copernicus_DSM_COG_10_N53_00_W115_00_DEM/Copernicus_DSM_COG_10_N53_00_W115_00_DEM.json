@@ -139,7 +139,7 @@
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_10_N53_00_W115_00_DEM_QL.tif",
       "type": "image/tiff",
       "title": "DEM QuickLook Relative",
-      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (relative)",
       "role": [
         "overview"
       ]
