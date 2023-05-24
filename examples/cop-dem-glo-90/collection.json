@@ -53,6 +53,11 @@
       "role": [
         "mask"
       ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
       "classes": [
         {
           "name": "Void_no_data",
@@ -133,6 +138,11 @@
       "role": [
         "mask"
       ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
       "classes": [
         {
           "name": "Void_no_data",
@@ -208,6 +218,11 @@
       "role": [
         "mask"
       ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
       "classes": [
         {
           "name": "No_water",
@@ -237,12 +252,17 @@
       "description": "Height Error Mask",
       "role": [
         "mask"
+      ],
+      "raster:bands": [
+        {
+          "data_type": "float32"
+        }
       ]
     },
     "acm": {
-      "title": "Height Error Mask",
+      "title": "Accuracy Layer",
       "type": "application/vnd.google-earth.kml+xml",
-      "description": "Height Error Mask",
+      "description": "Accuracy Layer",
       "role": [
         "mask"
       ]

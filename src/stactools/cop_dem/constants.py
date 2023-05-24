@@ -3,10 +3,14 @@ from typing import Optional
 
 from pystac import Provider, Link, ProviderRole
 from pystac.extensions.item_assets import AssetDefinition
-from pystac.extensions.raster import (RasterBand, DataType)
+from pystac.extensions.raster import DataType
 from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
 from stactools.cop_dem.classes import EDM_classes, FLM_classes, WBM_classes
+
+UINT8_BAND = [{"data_type": DataType.UINT8}]
+
+FLOAT32_BAND = [{"data_type": DataType.FLOAT32}]
 
 COP_DEM_PRODUCTS = ['glo-30', 'glo-90']
 
@@ -81,6 +85,7 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Editing Mask",
         "role": ["mask"],
+        "raster:bands": UINT8_BAND,
         "classes": EDM_classes,
     }),
     "flm":
@@ -89,6 +94,7 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Filling Mask",
         "role": ["mask"],
+        "raster:bands": UINT8_BAND,
         "classes": FLM_classes,
     }),
     "wbm":
@@ -97,6 +103,7 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Water Body Mask",
         "role": ["mask"],
+        "raster:bands": UINT8_BAND,
         "classes": WBM_classes,
     }),
     "hem":
@@ -105,12 +112,13 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Height Error Mask",
         "role": ["mask"],
+        "raster:bands": FLOAT32_BAND,
     }),
     "acm":
     AssetDefinition({
-        "title": "Height Error Mask",
+        "title": "Accuracy Layer",
         "type": "application/vnd.google-earth.kml+xml",
-        "description": "Height Error Mask",
+        "description": "Accuracy Layer",
         "role": ["mask"],
     }),
     "src":
@@ -174,6 +182,3 @@ COP_DEM_ASSETS = {
 }
 
 COP_DEM_DESCRIPTION = '''The Copernicus DEM is a Digital Surface Model (DSM) which represents the surface of the Earth including buildings, infrastructure and vegetation. We provide two instances of Copernicus DEM named GLO-30 Public and GLO-90. GLO-90 provides worldwide coverage at 90 meters. GLO-30 Public provides limited worldwide coverage at 30 meters because a small subset of tiles covering specific countries are not yet released to the public by the Copernicus Programme. Note that in both cases ocean areas do not have tiles, there one can assume height values equal to zero. Data is provided as Cloud Optimized GeoTIFFs and comes from Copernicus DEM 2021 release.'''  # noqa: E501
-
-# TODO: apply this to correct assets
-uint8_band = RasterBand({"data_type": DataType.UINT8})

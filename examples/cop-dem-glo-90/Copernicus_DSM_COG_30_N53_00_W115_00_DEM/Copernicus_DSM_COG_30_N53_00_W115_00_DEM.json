@@ -205,6 +205,11 @@
       "role": [
         "mask"
       ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
       "classes": [
         {
           "name": "Void_no_data",
@@ -286,6 +291,11 @@
       "role": [
         "mask"
       ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
       "classes": [
         {
           "name": "Void_no_data",
@@ -362,6 +372,11 @@
       "role": [
         "mask"
       ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
       "classes": [
         {
           "name": "No_water",
@@ -392,13 +407,18 @@
       "description": "Height Error Mask",
       "role": [
         "mask"
+      ],
+      "raster:bands": [
+        {
+          "data_type": "float32"
+        }
       ]
     },
     "acm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_ACM.kml",
       "type": "application/vnd.google-earth.kml+xml",
-      "title": "Height Error Mask",
-      "description": "Height Error Mask",
+      "title": "Accuracy Layer",
+      "description": "Accuracy Layer",
       "role": [
         "mask"
       ]
