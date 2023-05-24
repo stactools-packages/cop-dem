@@ -128,18 +128,17 @@
     "src": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_SRC.kml",
       "type": "application/vnd.google-earth.kml+xml",
-      "title": "Source mask",
+      "title": "Source Mask",
       "description": "Source Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "dem_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_QL.tif",
-      "type": "image/tiff",
+      "type": "image/tiff; application=geotiff",
       "title": "DEM QuickLook Relative",
-      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (relative)",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (relative)",
       "role": [
         "overview"
       ]
@@ -147,25 +146,25 @@
     "ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_QL.kml",
       "type": "application/vnd.google-earth.kml+xml",
-      "title": "QuickLook kml",
-      "description": "kml fo QuickLook data visualization",
+      "title": "QuickLookKML",
+      "description": "KML of QuickLook data visualization",
       "role": [
         "overview"
       ]
     },
     "dem_abs_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_DEM_ABS_QL.tif",
-      "type": "image/tiff",
+      "type": "image/tiff; application=geotiff",
       "title": "DEM QuickLook Absolute",
-      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (absolute)",
       "role": [
         "overview"
       ]
     },
     "edm_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_EDM_QL.tif",
-      "type": "image/tiff",
-      "title": "Editing mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "title": "Editing Mask QuickLook",
       "description": "QuickLook of Editing Mask",
       "role": [
         "overview"
@@ -173,8 +172,8 @@
     },
     "flm_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_FLM_QL.tif",
-      "type": "image/tiff",
-      "title": "Filling mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "title": "Filling Mask QuickLook",
       "description": "QuickLook of Filling Mask",
       "role": [
         "overview"
@@ -182,8 +181,8 @@
     },
     "wbm_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_WBM_QL.tif",
-      "type": "image/tiff",
-      "title": "Water Body mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "title": "Water Body Mask QuickLook",
       "description": "QuickLook of Water Body Mask",
       "role": [
         "overview"
@@ -191,8 +190,8 @@
     },
     "hem_ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_HEM_QL.tif",
-      "type": "image/tiff",
-      "title": "Height Error mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "title": "Height Error Mask QuickLook",
       "description": "QuickLook of Height Error Mask",
       "role": [
         "overview"
@@ -201,51 +200,46 @@
     "edm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_EDM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Editing mask",
+      "title": "Editing Mask",
       "description": "Editing Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "flm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_FLM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Filling mask",
+      "title": "Filling Mask",
       "description": "Filling Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "wbm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_WBM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Water Body mask",
+      "title": "Water Body Mask",
       "description": "Water Body Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "hem": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_HEM.tif",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-      "title": "Height Error mask",
+      "title": "Height Error Mask",
       "description": "Height Error Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "acm": {
       "href": "../../tests/data-files/external/AUXFILES/Copernicus_DSM_COG_30_N53_00_W115_00_ACM.kml",
       "type": "application/vnd.google-earth.kml+xml",
-      "title": "Height Error mask",
+      "title": "Height Error Mask",
       "description": "Height Error Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     }
   },

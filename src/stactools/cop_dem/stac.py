@@ -113,7 +113,9 @@ def create_item(
     # Make a list of /AUXFILES assets
     assets_auxfiles = ["EDM.tif", "FLM.tif", "WBM.tif", "HEM.tif", "ACM.kml"]
     assets_auxfiles_dict = dict([
-        change_asset_directory(href, asset, "AUXFILES")
+        change_asset_directory(href=href,
+                               asset_name=asset,
+                               subdirectory="AUXFILES")
         for asset in assets_auxfiles
     ])
 
@@ -123,7 +125,9 @@ def create_item(
         "FLM_QL.tif", "WBM_QL.tif", "HEM_QL.tif"
     ]
     assets_dict = dict([
-        change_asset_directory(href, asset, "PREVIEW")
+        change_asset_directory(href=href,
+                               asset_name=asset,
+                               subdirectory="PREVIEW")
         for asset in assets_previews
     ])
 

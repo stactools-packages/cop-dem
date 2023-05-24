@@ -47,110 +47,104 @@
       ]
     },
     "edm": {
-      "title": "Editing mask",
+      "title": "Editing Mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Editing Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "flm": {
-      "title": "Filling mask",
+      "title": "Filling Mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Filling Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "wbm": {
-      "title": "Water Body mask",
+      "title": "Water Body Mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Water Body Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "hem": {
-      "title": "Height Error mask",
+      "title": "Height Error Mask",
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "description": "Height Error Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "acm": {
-      "title": "Height Error mask",
+      "title": "Height Error Mask",
       "type": "application/vnd.google-earth.kml+xml",
       "description": "Height Error Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "src": {
-      "title": "Source mask",
+      "title": "Source Mask",
       "type": "application/vnd.google-earth.kml+xml",
       "description": "Source Mask",
       "role": [
-        "data",
-        "data-mask"
+        "mask"
       ]
     },
     "dem_ql": {
       "title": "DEM QuickLook Relative",
-      "type": "image/tiff",
+      "type": "image/tiff; application=geotiff",
       "description": "QuickLook of Digital Elevation Model with shaded relief representation (relative)",
       "role": [
         "overview"
       ]
     },
     "ql": {
-      "title": "QuickLook kml",
+      "title": "QuickLookKML",
       "type": "application/vnd.google-earth.kml+xml",
-      "description": "kml of QuickLook data visualization",
+      "description": "KML of QuickLook data visualization",
       "role": [
         "overview"
       ]
     },
     "dem_abs_ql": {
       "title": "DEM QuickLook Absolute",
-      "type": "image/tiff",
-      "description": "Quicklook of Digital Elevation Model wiuth shaded relief representation (absolute)",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (absolute)",
       "role": [
         "overview"
       ]
     },
     "edm_ql": {
-      "title": "Editing mask QuickLook",
-      "type": "image/tiff",
+      "title": "Editing Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
       "description": "QuickLook of Editing Mask",
       "role": [
         "overview"
       ]
     },
     "flm_ql": {
-      "title": "Filling mask QuickLook",
-      "type": "image/tiff",
+      "title": "Filling Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
       "description": "QuickLook of Filling Mask",
       "role": [
         "overview"
       ]
     },
     "wbm_ql": {
-      "title": "Water Body mask QuickLook",
-      "type": "image/tiff",
+      "title": "Water Body Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
       "description": "QuickLook of Water Body Mask",
       "role": [
         "overview"
       ]
     },
     "hem_ql": {
-      "title": "Height Error mask QuickLook",
-      "type": "image/tiff",
+      "title": "Height Error Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
       "description": "QuickLook of Height Error Mask",
       "role": [
         "overview"
