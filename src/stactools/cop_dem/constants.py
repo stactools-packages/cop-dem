@@ -173,5 +173,3 @@ COP_DEM_DESCRIPTION = '''The Copernicus DEM is a Digital Surface Model (DSM) whi
 
 # TODO: apply this to correct assets
 uint8_band = RasterBand({"data_type": DataType.UINT8})
-
-
