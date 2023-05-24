@@ -6,6 +6,7 @@ from pystac.extensions.item_assets import AssetDefinition
 from pystac.extensions.raster import (RasterBand, DataType)
 from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
+from stactools.cop_dem.classes import EDM_classes, FLM_classes, WBM_classes
 
 COP_DEM_PRODUCTS = ['glo-30', 'glo-90']
 
@@ -80,6 +81,7 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Editing Mask",
         "role": ["mask"],
+        "classes": EDM_classes,
     }),
     "flm":
     AssetDefinition({
@@ -87,6 +89,7 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Filling Mask",
         "role": ["mask"],
+        "classes": FLM_classes,
     }),
     "wbm":
     AssetDefinition({
@@ -94,6 +97,7 @@ COP_DEM_ASSETS = {
         "type": MediaType.COG,
         "description": "Water Body Mask",
         "role": ["mask"],
+        "classes": WBM_classes,
     }),
     "hem":
     AssetDefinition({
