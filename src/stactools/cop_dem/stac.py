@@ -217,6 +217,7 @@ def create_collection(product: str, host: Optional[str] = None) -> Collection:
             ItemAssetsExtension.get_schema_uri(),
             ProjectionExtension.get_schema_uri(),
             RasterExtension.get_schema_uri(),
+            "https://stac-extensions.github.io/classification/v1.1.0/schema.json"
         ],
     )
 
