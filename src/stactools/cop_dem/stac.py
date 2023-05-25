@@ -136,9 +136,7 @@ def create_item(
 
     for key, value in assets_dict.items():
         if (asset_def := co.COP_DEM_ASSETS.get(key)) is not None:
-            asset = asset_def.create_asset((value))
-
-        item.add_asset(key, asset)
+            item.add_asset(key, asset_def.create_asset(value))
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG

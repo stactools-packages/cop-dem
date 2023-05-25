@@ -81,7 +81,7 @@
     {
       "rel": "product handbook",
       "href": "https://spacedata.copernicus.eu/documents/20123/122407/GEO1988-CopernicusDEM-SPE-002_ProductHandbook_I5.0+%281%29.pdf/706ee17d-2cce-f1fa-a73e-1686d28f09dd?t=1679657087883application/pdf",
-      "type": "Compernicus DEM Product Handbook (Nov 2022)",
+      "type": "Copernicus DEM Product Handbook (Nov 2022)",
       "description": "Also includes data usage information"
     },
     {
@@ -146,7 +146,7 @@
     "ql": {
       "href": "../../tests/data-files/external/PREVIEW/Copernicus_DSM_COG_30_N53_00_W115_00_QL.kml",
       "type": "application/vnd.google-earth.kml+xml",
-      "title": "QuickLookKML",
+      "title": "QuickLook KML",
       "description": "KML of QuickLook data visualization",
       "role": [
         "overview"
@@ -210,7 +210,7 @@
           "data_type": "uint8"
         }
       ],
-      "classes": [
+      "classification:classes": [
         {
           "name": "Void_no_data",
           "value": 0,
@@ -296,7 +296,7 @@
           "data_type": "uint8"
         }
       ],
-      "classes": [
+      "classification:classes": [
         {
           "name": "Void_no_data",
           "value": 0,
@@ -377,7 +377,7 @@
           "data_type": "uint8"
         }
       ],
-      "classes": [
+      "classification:classes": [
         {
           "name": "No_water",
           "value": 0,

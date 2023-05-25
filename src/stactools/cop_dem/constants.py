@@ -65,7 +65,7 @@ COP_DEM_LINKS = [
         "product handbook",
         "https://spacedata.copernicus.eu/documents/20123/122407/GEO1988-CopernicusDEM-SPE-002_ProductHandbook_I5.0+%281%29.pdf/706ee17d-2cce-f1fa-a73e-1686d28f09dd?t=1679657087883"  # noqa: E501
         "application/pdf",
-        "Compernicus DEM Product Handbook (Nov 2022)",
+        "Copernicus DEM Product Handbook (Nov 2022)",
         extra_fields={"description": "Also includes data usage information"}),
     Link(
         "license",
@@ -86,7 +86,7 @@ COP_DEM_ASSETS = {
         "description": "Editing Mask",
         "role": ["mask"],
         "raster:bands": UINT8_BAND,
-        "classes": EDM_classes,
+        "classification:classes": EDM_classes,
     }),
     "flm":
     AssetDefinition({
@@ -95,7 +95,7 @@ COP_DEM_ASSETS = {
         "description": "Filling Mask",
         "role": ["mask"],
         "raster:bands": UINT8_BAND,
-        "classes": FLM_classes,
+        "classification:classes": FLM_classes,
     }),
     "wbm":
     AssetDefinition({
@@ -104,7 +104,7 @@ COP_DEM_ASSETS = {
         "description": "Water Body Mask",
         "role": ["mask"],
         "raster:bands": UINT8_BAND,
-        "classes": WBM_classes,
+        "classification:classes": WBM_classes,
     }),
     "hem":
     AssetDefinition({
@@ -138,7 +138,7 @@ COP_DEM_ASSETS = {
     }),
     "ql":
     AssetDefinition({
-        "title": "QuickLookKML",
+        "title": "QuickLook KML",
         "type": "application/vnd.google-earth.kml+xml",
         "description": "KML of QuickLook data visualization",
         "role": ["overview"],
