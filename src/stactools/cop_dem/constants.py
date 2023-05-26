@@ -8,6 +8,8 @@ from pystac.utils import str_to_datetime
 from pystac.media_type import MediaType
 from stactools.cop_dem.classes import EDM_classes, FLM_classes, WBM_classes
 
+CLASSIFICATION_EXTENSION_SCHEMA = "https://stac-extensions.github.io/classification/v1.1.0/schema.json"  # noqa:E501
+
 UINT8_BAND = [{"data_type": DataType.UINT8}]
 
 FLOAT32_BAND = [{"data_type": DataType.FLOAT32}]

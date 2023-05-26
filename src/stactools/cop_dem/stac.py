@@ -138,6 +138,9 @@ def create_item(
         if (asset_def := co.COP_DEM_ASSETS.get(key)) is not None:
             item.add_asset(key, asset_def.create_asset(value))
 
+    # Include the Classification Schema for Mask assets
+    item.stac_extensions.append(co.CLASSIFICATION_EXTENSION_SCHEMA)
+
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG
     projection.transform = transform[0:6]
@@ -217,7 +220,7 @@ def create_collection(product: str, host: Optional[str] = None) -> Collection:
             ItemAssetsExtension.get_schema_uri(),
             ProjectionExtension.get_schema_uri(),
             RasterExtension.get_schema_uri(),
-            "https://stac-extensions.github.io/classification/v1.1.0/schema.json"
+            co.CLASSIFICATION_EXTENSION_SCHEMA
         ],
     )
 
