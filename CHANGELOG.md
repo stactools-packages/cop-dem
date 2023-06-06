@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+- Add additional assets that are included in the data distribution: Masks and Previews. ([#6](https://github.com/stactools-packages/cop-dem/issues/6))
+
 ## [0.4.1] - 2023-04-14
 
 ### Changed

@@ -29,6 +29,8 @@ from pystac import Item
 from stactools.core.io import ReadHrefModifier
 from stactools.cop_dem import constants as co
 
+from stactools.cop_dem.assets_utils import change_asset_directory
+
 
 def create_item(
     href: str,
@@ -107,6 +109,37 @@ def create_item(
 
     item.add_asset("data", data_asset)
     RasterExtension.ext(data_asset, add_if_missing=True).bands = [data_bands]
+
+    # Make a list of /AUXFILES assets
+    assets_auxfiles = ["EDM.tif", "FLM.tif", "WBM.tif", "HEM.tif", "ACM.kml"]
+    assets_auxfiles_dict = dict([
+        change_asset_directory(href=href,
+                               asset_name=asset,
+                               subdirectory="AUXFILES")
+        for asset in assets_auxfiles
+    ])
+
+    # Make a list of /PREVIEW assets
+    assets_previews = [
+        "SRC.kml", "DEM_QL.tif", "QL.kml", "DEM_ABS_QL.tif", "EDM_QL.tif",
+        "FLM_QL.tif", "WBM_QL.tif", "HEM_QL.tif"
+    ]
+    assets_dict = dict([
+        change_asset_directory(href=href,
+                               asset_name=asset,
+                               subdirectory="PREVIEW")
+        for asset in assets_previews
+    ])
+
+    # Add the AUX and Preview Assets together
+    assets_dict.update(assets_auxfiles_dict)
+
+    for key, value in assets_dict.items():
+        if (asset_def := co.COP_DEM_ASSETS.get(key)) is not None:
+            item.add_asset(key, asset_def.create_asset(value))
+
+    # Include the Classification Schema for Mask assets
+    item.stac_extensions.append(co.CLASSIFICATION_EXTENSION_SCHEMA)
 
     projection = ProjectionExtension.ext(item, add_if_missing=True)
     projection.epsg = co.COP_DEM_EPSG
@@ -187,6 +220,7 @@ def create_collection(product: str, host: Optional[str] = None) -> Collection:
             ItemAssetsExtension.get_schema_uri(),
             ProjectionExtension.get_schema_uri(),
             RasterExtension.get_schema_uri(),
+            co.CLASSIFICATION_EXTENSION_SCHEMA
         ],
     )
 

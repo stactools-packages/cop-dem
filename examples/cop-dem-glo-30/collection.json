@@ -18,6 +18,12 @@
       "description": "Also includes data usage information"
     },
     {
+      "rel": "product handbook",
+      "href": "https://spacedata.copernicus.eu/documents/20123/122407/GEO1988-CopernicusDEM-SPE-002_ProductHandbook_I5.0+%281%29.pdf/706ee17d-2cce-f1fa-a73e-1686d28f09dd?t=1679657087883application/pdf",
+      "type": "Copernicus DEM Product Handbook (Nov 2022)",
+      "description": "Also includes data usage information"
+    },
+    {
       "rel": "license",
       "href": "https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf",
       "type": "Copernicus Data Access"
@@ -31,13 +37,299 @@
   "stac_extensions": [
     "https://stac-extensions.github.io/item-assets/v1.0.0/schema.json",
     "https://stac-extensions.github.io/projection/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/raster/v1.1.0/schema.json"
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/classification/v1.1.0/schema.json"
   ],
   "item_assets": {
     "data": {
       "type": "image/tiff; application=geotiff; profile=cloud-optimized",
       "roles": [
         "data"
+      ]
+    },
+    "edm": {
+      "title": "Editing Mask",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "description": "Editing Mask",
+      "role": [
+        "mask"
+      ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
+      "classification:classes": [
+        {
+          "name": "Void_no_data",
+          "value": 0,
+          "description": "Void (no data)"
+        },
+        {
+          "name": "Not_edited",
+          "value": 1,
+          "description": "Not edited"
+        },
+        {
+          "name": "Infill_of_external_elevation_data",
+          "value": 2,
+          "description": "Infill of external elevation data"
+        },
+        {
+          "name": "Interpolated_pixels",
+          "value": 3,
+          "description": "Interpolated pixels"
+        },
+        {
+          "name": "Smoothed_pixels",
+          "value": 4,
+          "description": "Smoothed pixels"
+        },
+        {
+          "name": "Airport_editing",
+          "value": 5,
+          "description": "Airport editing"
+        },
+        {
+          "name": "Raised_negative_elevation_pixels",
+          "value": 6,
+          "description": "Raised negative elevation pixels"
+        },
+        {
+          "name": "Flattened_pixels",
+          "value": 7,
+          "description": "Flattened pixels"
+        },
+        {
+          "name": "Ocean_pixels",
+          "value": 8,
+          "description": "Ocean pixels"
+        },
+        {
+          "name": "Lake_pixels",
+          "value": 9,
+          "description": "Lake pixels"
+        },
+        {
+          "name": "River_pixels",
+          "value": 10,
+          "description": "River pixels"
+        },
+        {
+          "name": "Shoreline_pixels",
+          "value": 11,
+          "description": "Shoreline pixels"
+        },
+        {
+          "name": "Morphed_pixels_(series_of_pixels_manually_set)",
+          "value": 12,
+          "description": "Morphed pixels (series of pixels manually set)"
+        },
+        {
+          "name": "Shifted_pixels",
+          "value": 13,
+          "description": "Shifted pixels"
+        }
+      ]
+    },
+    "flm": {
+      "title": "Filling Mask",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "description": "Filling Mask",
+      "role": [
+        "mask"
+      ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
+      "classification:classes": [
+        {
+          "name": "Void_no_data",
+          "value": 0,
+          "description": "Void (no data)"
+        },
+        {
+          "name": "Edited_except_filled_pixels",
+          "value": 1,
+          "description": "Edited (except filled pixels)"
+        },
+        {
+          "name": "Not_edited_not_filled",
+          "value": 2,
+          "description": "Not edited / not filled"
+        },
+        {
+          "name": "ASTER",
+          "value": 3,
+          "description": "ASTER"
+        },
+        {
+          "name": "SRTM90",
+          "value": 4,
+          "description": "SRTM90"
+        },
+        {
+          "name": "SRTM30",
+          "value": 5,
+          "description": "SRTM30"
+        },
+        {
+          "name": "GMTED2010",
+          "value": 6,
+          "description": "GMTED2010"
+        },
+        {
+          "name": "SRTM30plus",
+          "value": 7,
+          "description": "SRTM30plus"
+        },
+        {
+          "name": "TerraSAR-X_Radargrammetric_DEM",
+          "value": 8,
+          "description": "TerraSAR-X Radargrammetric DEM"
+        },
+        {
+          "name": "AW3D306",
+          "value": 9,
+          "description": "AW3D306"
+        },
+        {
+          "name": "Norway_DEM",
+          "value": 100,
+          "description": "Norway DEM"
+        },
+        {
+          "name": "DSM05_Spain",
+          "value": 101,
+          "description": "DSM05 Spain"
+        },
+        {
+          "name": "Norway_DEM_v2",
+          "value": 102,
+          "description": "Norway DEM v2"
+        }
+      ]
+    },
+    "wbm": {
+      "title": "Water Body Mask",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "description": "Water Body Mask",
+      "role": [
+        "mask"
+      ],
+      "raster:bands": [
+        {
+          "data_type": "uint8"
+        }
+      ],
+      "classification:classes": [
+        {
+          "name": "No_water",
+          "value": 0,
+          "description": "No water"
+        },
+        {
+          "name": "Ocean",
+          "value": 1,
+          "description": "Ocean"
+        },
+        {
+          "name": "Lake",
+          "value": 2,
+          "description": "Lake"
+        },
+        {
+          "name": "River",
+          "value": 3,
+          "description": "River"
+        }
+      ]
+    },
+    "hem": {
+      "title": "Height Error Mask",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "description": "Height Error Mask",
+      "role": [
+        "mask"
+      ],
+      "raster:bands": [
+        {
+          "data_type": "float32"
+        }
+      ]
+    },
+    "acm": {
+      "title": "Accuracy Layer",
+      "type": "application/vnd.google-earth.kml+xml",
+      "description": "Accuracy Layer",
+      "role": [
+        "mask"
+      ]
+    },
+    "src": {
+      "title": "Source Mask",
+      "type": "application/vnd.google-earth.kml+xml",
+      "description": "Source Mask",
+      "role": [
+        "mask"
+      ]
+    },
+    "dem_ql": {
+      "title": "DEM QuickLook Relative",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (relative)",
+      "role": [
+        "overview"
+      ]
+    },
+    "ql": {
+      "title": "QuickLook KML",
+      "type": "application/vnd.google-earth.kml+xml",
+      "description": "KML of QuickLook data visualization",
+      "role": [
+        "overview"
+      ]
+    },
+    "dem_abs_ql": {
+      "title": "DEM QuickLook Absolute",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Digital Elevation Model with shaded relief representation (absolute)",
+      "role": [
+        "overview"
+      ]
+    },
+    "edm_ql": {
+      "title": "Editing Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Editing Mask",
+      "role": [
+        "overview"
+      ]
+    },
+    "flm_ql": {
+      "title": "Filling Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Filling Mask",
+      "role": [
+        "overview"
+      ]
+    },
+    "wbm_ql": {
+      "title": "Water Body Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Water Body Mask",
+      "role": [
+        "overview"
+      ]
+    },
+    "hem_ql": {
+      "title": "Height Error Mask QuickLook",
+      "type": "image/tiff; application=geotiff",
+      "description": "QuickLook of Height Error Mask",
+      "role": [
+        "overview"
       ]
     }
   },
@@ -75,7 +367,7 @@
       "roles": [
         "licensor"
       ],
-      "url": "https://spacedata.copernicus.eu/documents/20123/121286/CSCDA_ESA_Mission-specific+Annex_31_Oct_22.pdf"
+      "url": "https://spacedata.copernicus.eu/documents/20126/0/CSCDA_ESA_Mission-specific+Annex.pdf"
     },
     {
       "name": "Sinergise",
